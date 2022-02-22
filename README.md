@@ -4,8 +4,8 @@ https://portal.runway.host/api/docs/index.html?url=/swagger/v1/swagger.json
 
 # Installing the package
 ```
-git clone https://github.com/pjv4yj/python-sdk.git
-cd python-sdk
+git clone https://github.com/pjv4yj/runway-sdk.git
+cd runway-sdk
 pip3 install -e .
 ```
 
