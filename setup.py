@@ -7,5 +7,5 @@ setup(
       author='Runway Internal Development Team',
       url='https://github.com/pjv4yj/python-sdk',
       packages=['runway'],
-      install_requires=['azure','azure-core','msrest']
+      install_requires=['azure-core','msrest']
     )
