@@ -339,11 +339,12 @@ class AuthenticationOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def login(
@@ -351,6 +352,8 @@ class AuthenticationOperations(object):
         request,  # type: "_models.LoginRequest"
         **kwargs  # type: Any
     ):
+
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.LoginResponse"
         """login.
 
@@ -405,6 +408,9 @@ class AuthenticationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        
+        kwargs["headers"] = self._headers
+
         # type: (...) -> IO
         """Authentication_Logout.
 
@@ -455,6 +461,7 @@ class AuthenticationOperations(object):
         request,  # type: "_models.SignupRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """Authentication_Signup.
 
@@ -514,6 +521,7 @@ class AuthenticationOperations(object):
         request,  # type: "_models.SignupRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.LoginResponse"
         """signup_live.
 
@@ -568,6 +576,7 @@ class AuthenticationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayUser"
         """get_current_user.
 
@@ -615,6 +624,7 @@ class AuthenticationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayNode"
         """get_current_node_status.
 
@@ -662,6 +672,7 @@ class AuthenticationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.LoginResponse"
         """create_utility_node.
 
@@ -710,6 +721,7 @@ class AuthenticationOperations(object):
         request,  # type: "_models.ActivateUserRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.LoginResponse"
         """activate.
 
@@ -765,6 +777,7 @@ class AuthenticationOperations(object):
         request,  # type: "_models.EnrollRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.EnrollResponse"
         """enroll.
 
@@ -820,6 +833,7 @@ class AuthenticationOperations(object):
         email,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> bool
         """is_email_unique.
 
@@ -871,6 +885,7 @@ class AuthenticationOperations(object):
         password,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """get_password_strength.
 
@@ -922,6 +937,7 @@ class AuthenticationOperations(object):
         request,  # type: "_models.ResetPasswordRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.LoginResponse"
         """reset_password.
 
@@ -976,6 +992,7 @@ class AuthenticationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """ping.
 

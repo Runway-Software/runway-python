@@ -63,17 +63,19 @@ class ClientOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def socket(
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """socket.
 

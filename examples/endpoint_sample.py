@@ -2,11 +2,7 @@ import runway.sdk.models as models
 from runway.sdk import PyRunway
 
 # Basic setup to connect to Runway REST API
-runway_obj = PyRunway()
-login_request = models.LoginRequest(remember=True,email="<email address>",password="<password>")
-authentication_result = runway_obj.authentication.login(request=login_request)
-session_id = authentication_result.session
-headers = {"Authorization" : "Session " + session_id}
+runway_obj = PyRunway(email="<email address>", password="<password>")
 
 """
 Example calls for these endpoint functions
@@ -14,12 +10,14 @@ get_all_endpoint_assets(headers)
 
 """
 
-def get_all_endpoint_assets(headers):
+def get_all_endpoint_assets():
 
     """
     Sample function to get list of all
     endpoint assets in Runway
     """
 
-    endpoint_assets_result = runway_obj.endpoint_asset.list(headers=headers)
+    endpoint_assets_result = runway_obj.endpoint_asset.list()
     print(endpoint_assets_result)
+
+get_all_endpoint_assets()

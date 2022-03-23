@@ -331,11 +331,12 @@ class UserOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def delete_by_set(
@@ -343,6 +344,7 @@ class UserOperations(object):
         set_request,  # type: "_models.IdRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_set.
 
@@ -398,6 +400,7 @@ class UserOperations(object):
         request,  # type: "_models.CreateUserRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.IdResponse"
         """create.
 
@@ -452,6 +455,7 @@ class UserOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIUserQueryView"
         """list.
 
@@ -500,6 +504,7 @@ class UserOperations(object):
         user_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_id.
 
@@ -552,6 +557,7 @@ class UserOperations(object):
         request,  # type: "_models.UpdateUserRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """update.
 
@@ -610,6 +616,7 @@ class UserOperations(object):
         user_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayUser"
         """load.
 
@@ -660,6 +667,7 @@ class UserOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -708,6 +716,7 @@ class UserOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIUserQueryView"
         """query.
 
@@ -762,6 +771,7 @@ class UserOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -810,6 +820,7 @@ class UserOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -864,6 +875,7 @@ class UserOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -913,6 +925,7 @@ class UserOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

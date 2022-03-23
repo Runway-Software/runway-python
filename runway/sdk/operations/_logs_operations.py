@@ -69,11 +69,12 @@ class LogsOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def request_logs(
@@ -81,6 +82,7 @@ class LogsOperations(object):
         node_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> str
         """request_logs.
 

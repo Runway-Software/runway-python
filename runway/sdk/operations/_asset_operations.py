@@ -111,11 +111,12 @@ class AssetOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def map_assets(
@@ -123,6 +124,7 @@ class AssetOperations(object):
         request,  # type: "_models.AssetMap"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """map_assets.
 
@@ -178,6 +180,7 @@ class AssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfAssetMapEndpointView"
         """query_map.
 
@@ -232,6 +235,7 @@ class AssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 

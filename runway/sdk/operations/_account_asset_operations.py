@@ -277,11 +277,12 @@ class AccountAssetOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def delete_by_set(
@@ -289,6 +290,8 @@ class AccountAssetOperations(object):
         set_request,  # type: "_models.IdRequest"
         **kwargs  # type: Any
     ):
+
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_set.
 
@@ -343,6 +346,7 @@ class AccountAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIAccountAssetQueryView"
         """list.
 
@@ -391,6 +395,7 @@ class AccountAssetOperations(object):
         account_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_id.
 
@@ -442,6 +447,7 @@ class AccountAssetOperations(object):
         account_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayAccountAsset"
         """load.
 
@@ -492,6 +498,7 @@ class AccountAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -540,6 +547,7 @@ class AccountAssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIAccountAssetQueryView"
         """query.
 
@@ -594,6 +602,7 @@ class AccountAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -642,6 +651,7 @@ class AccountAssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -696,6 +706,7 @@ class AccountAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -745,6 +756,7 @@ class AccountAssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

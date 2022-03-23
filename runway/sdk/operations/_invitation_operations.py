@@ -375,11 +375,12 @@ class InvitationOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def invite_users(
@@ -387,6 +388,7 @@ class InvitationOperations(object):
         request,  # type: "_models.GroupInvitationRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """invite_users.
 
@@ -442,6 +444,7 @@ class InvitationOperations(object):
         request,  # type: "_models.InvitationAnswerRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """answer_invitation.
 
@@ -497,6 +500,7 @@ class InvitationOperations(object):
         set_request,  # type: "_models.IdRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_set.
 
@@ -551,6 +555,7 @@ class InvitationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIInvitationQueryView"
         """list.
 
@@ -598,6 +603,7 @@ class InvitationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IInvitationQueryView"]
         """get_invitations.
 
@@ -647,6 +653,7 @@ class InvitationOperations(object):
         object_ids,  # type: List[str]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """add_to_set_by_ids.
 
@@ -705,6 +712,7 @@ class InvitationOperations(object):
         email,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> bool
         """has_invitations.
 
@@ -755,6 +763,7 @@ class InvitationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -803,6 +812,7 @@ class InvitationOperations(object):
         invitation_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayInvitation"
         """load.
 
@@ -854,6 +864,7 @@ class InvitationOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIInvitationQueryView"
         """query.
 
@@ -908,6 +919,7 @@ class InvitationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -956,6 +968,7 @@ class InvitationOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -1010,6 +1023,7 @@ class InvitationOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -1059,6 +1073,7 @@ class InvitationOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

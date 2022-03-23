@@ -301,11 +301,12 @@ class EndpointAssetOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def delete_by_set(
@@ -313,6 +314,8 @@ class EndpointAssetOperations(object):
         set_request,  # type: "_models.IdRequest"
         **kwargs  # type: Any
     ):
+
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_set.
 
@@ -367,6 +370,7 @@ class EndpointAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIEndpointAssetQueryView"
         """list.
 
@@ -415,6 +419,7 @@ class EndpointAssetOperations(object):
         set_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_id.
 
@@ -466,6 +471,7 @@ class EndpointAssetOperations(object):
         set_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayEndpointAsset"
         """load.
 
@@ -517,6 +523,7 @@ class EndpointAssetOperations(object):
         request,  # type: "_models.DissolveEndpointsRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """dissolve_endpoints.
 
@@ -571,6 +578,7 @@ class EndpointAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -619,6 +627,7 @@ class EndpointAssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIEndpointAssetQueryView"
         """query.
 
@@ -673,6 +682,7 @@ class EndpointAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -721,6 +731,7 @@ class EndpointAssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -775,6 +786,7 @@ class EndpointAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -824,6 +836,7 @@ class EndpointAssetOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

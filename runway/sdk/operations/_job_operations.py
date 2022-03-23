@@ -469,11 +469,12 @@ class JobOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def delete_by_set(
@@ -481,6 +482,8 @@ class JobOperations(object):
         set_request,  # type: "_models.IdRequest"
         **kwargs  # type: Any
     ):
+
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_set.
 
@@ -536,6 +539,8 @@ class JobOperations(object):
         request,  # type: "_models.CreateJobRequest"
         **kwargs  # type: Any
     ):
+
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.CreateJobResponse"
         """create.
 
@@ -590,6 +595,8 @@ class JobOperations(object):
         self,
         **kwargs  # type: Any
     ):
+
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIJobQueryView"
         """list.
 
@@ -637,6 +644,7 @@ class JobOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> str
         """get_random_job_name.
 
@@ -685,6 +693,7 @@ class JobOperations(object):
         request,  # type: "_models.CompileJobRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.ActionConfiguration"]
         """compile.
 
@@ -741,6 +750,7 @@ class JobOperations(object):
         request,  # type: "_models.UpdateJobRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """update.
 
@@ -799,6 +809,7 @@ class JobOperations(object):
         job_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_id.
 
@@ -850,6 +861,7 @@ class JobOperations(object):
         job_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayJob"
         """load.
 
@@ -902,6 +914,7 @@ class JobOperations(object):
         schedule,  # type: "_models.JobSchedule"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """update_schedule.
 
@@ -961,6 +974,7 @@ class JobOperations(object):
         request,  # type: List["_models.ActionSettingRequest"]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """update_actions.
 
@@ -1020,6 +1034,7 @@ class JobOperations(object):
         value=None,  # type: Optional[bool]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """enable_job.
 
@@ -1073,6 +1088,7 @@ class JobOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -1121,6 +1137,7 @@ class JobOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIJobQueryView"
         """query.
 
@@ -1175,6 +1192,7 @@ class JobOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -1223,6 +1241,7 @@ class JobOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -1277,6 +1296,7 @@ class JobOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -1326,6 +1346,7 @@ class JobOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

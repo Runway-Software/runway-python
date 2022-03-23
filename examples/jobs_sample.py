@@ -1,12 +1,7 @@
 import runway.sdk.models as models
 from runway.sdk import PyRunway
 
-# Basic setup to connect to Runway REST API
-runway_obj = PyRunway()
-login_request = models.LoginRequest(remember=True,email="<email address>",password="<password>")
-authentication_result = runway_obj.authentication.login(request=login_request)
-session_id = authentication_result.session
-headers = {"Authorization" : "Session " + session_id}
+runway_obj = PyRunway(email="<email address>", password="<password>")
 
 """
 Example calls for these functions
@@ -17,14 +12,14 @@ delete_job_by_id(headers,"6319a1d8-2469-4f5a-b586-c11cf7a97353")
 
 """
 
-def get_all_jobs(headers):
+def get_all_jobs():
 
     """
     Sample function to get a list of all existing
     jobs in Runway and print their attributes
     """
 
-    job_list_result = runway_obj.job.list(headers=headers)
+    job_list_result = runway_obj.job.list()
     for job in job_list_result.items:
         print()
         print("JOB: ")
@@ -34,7 +29,7 @@ def get_all_jobs(headers):
         print()
 
 
-def create_job(headers,name,is_enabled,is_hidden,description,actions):
+def create_job(name,is_enabled,is_hidden,description,actions):
 
     """
     Sample function to create a job in
@@ -42,17 +37,18 @@ def create_job(headers,name,is_enabled,is_hidden,description,actions):
     """
 
     request = models.CreateJobRequest(is_enabled=is_enabled,name=name,is_hidden=is_hidden,description=description,actions=actions)
-    job_create_result = runway_obj.job.create(request=request,headers=headers)
+    job_create_result = runway_obj.job.create(request=request)
 
     print(job_create_result)
 
 
-def delete_job_by_id(headers,id):
+def delete_job_by_id(id):
 
     """
     Sample function to delete a job in Runway
     using the SDK
     """
 
-    job_delete_result = runway_obj.job.delete_by_id(job_id=id,headers=headers)
+    job_delete_result = runway_obj.job.delete_by_id(job_id=id)
     print(job_delete_result)
+

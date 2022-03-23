@@ -373,11 +373,12 @@ class RunnerOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def delete_by_set(
@@ -385,6 +386,7 @@ class RunnerOperations(object):
         set_request,  # type: "_models.IdRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_set.
 
@@ -439,6 +441,7 @@ class RunnerOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIRunnerQueryView"
         """list.
 
@@ -487,6 +490,7 @@ class RunnerOperations(object):
         runner_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_id.
 
@@ -538,6 +542,7 @@ class RunnerOperations(object):
         runner_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayRunner"
         """load.
 
@@ -589,6 +594,7 @@ class RunnerOperations(object):
         request,  # type: "_models.DissolveRunnersRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """begin_dissolve_runners.
 
@@ -643,6 +649,7 @@ class RunnerOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """complete_dissolve_runner.
 
@@ -691,6 +698,7 @@ class RunnerOperations(object):
         group_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryRunnersResponse"
         """query_by_group_id.
 
@@ -742,6 +750,7 @@ class RunnerOperations(object):
         ip_address,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryRunnersResponse"
         """query_by_ip.
 
@@ -792,6 +801,7 @@ class RunnerOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -840,6 +850,7 @@ class RunnerOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIRunnerQueryView"
         """query.
 
@@ -894,6 +905,7 @@ class RunnerOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -942,6 +954,7 @@ class RunnerOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -996,6 +1009,7 @@ class RunnerOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -1045,6 +1059,7 @@ class RunnerOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

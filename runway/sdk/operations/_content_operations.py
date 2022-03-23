@@ -202,17 +202,19 @@ class ContentOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def version(
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.VersionResponse"
         """version.
 
@@ -263,6 +265,7 @@ class ContentOperations(object):
         id=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """download_public_file.
 
@@ -317,6 +320,7 @@ class ContentOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.ContentView"]
         """get_public_downloads.
 
@@ -365,6 +369,7 @@ class ContentOperations(object):
         key=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.ContentInfo"
         """get_public_file_info.
 
@@ -416,6 +421,7 @@ class ContentOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.IdResponse"
         """upload.
 
@@ -464,6 +470,7 @@ class ContentOperations(object):
         content_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """download.
 

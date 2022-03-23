@@ -427,11 +427,12 @@ class JobThreadOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def delete_by_id(
@@ -439,6 +440,7 @@ class JobThreadOperations(object):
         thread_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_id.
 
@@ -490,6 +492,7 @@ class JobThreadOperations(object):
         thread_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayJobThread"
         """load.
 
@@ -541,6 +544,7 @@ class JobThreadOperations(object):
         job_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_by_job.
 
@@ -592,6 +596,7 @@ class JobThreadOperations(object):
         job_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.RunwayJobThread"]
         """get_threads_for_job.
 
@@ -642,6 +647,7 @@ class JobThreadOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.ThreadView"]
         """get_auto_spawn_threads.
 
@@ -690,6 +696,7 @@ class JobThreadOperations(object):
         thread_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """download_result_for_thread.
 
@@ -741,6 +748,7 @@ class JobThreadOperations(object):
         thread_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """get_last_log_for_thread.
 
@@ -792,6 +800,7 @@ class JobThreadOperations(object):
         thread_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> str
         """get_node_name_for_thread.
 
@@ -843,6 +852,7 @@ class JobThreadOperations(object):
         request,  # type: "_models.StepThreadRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """step_job_thread.
 
@@ -897,6 +907,7 @@ class JobThreadOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -944,6 +955,7 @@ class JobThreadOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIJobThreadQueryView"
         """list.
 
@@ -992,6 +1004,7 @@ class JobThreadOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIJobThreadQueryView"
         """query.
 
@@ -1046,6 +1059,7 @@ class JobThreadOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -1094,6 +1108,7 @@ class JobThreadOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -1148,6 +1163,7 @@ class JobThreadOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -1197,6 +1213,7 @@ class JobThreadOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

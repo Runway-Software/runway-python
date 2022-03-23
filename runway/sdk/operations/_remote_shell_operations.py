@@ -115,11 +115,12 @@ class RemoteShellOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def shell_write(
@@ -127,6 +128,7 @@ class RemoteShellOperations(object):
         request,  # type: "_models.RemoteShellRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> str
         """shell_write.
 
@@ -186,6 +188,7 @@ class RemoteShellOperations(object):
         request,  # type: "_models.RemoteShellDeleteRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """shell_cancel.
 
@@ -241,6 +244,7 @@ class RemoteShellOperations(object):
         request,  # type: "_models.RemoteShellPingRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """shell_ping.
 

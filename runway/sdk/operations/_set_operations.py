@@ -231,17 +231,19 @@ class SetOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def create_set(
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.IdResponse"
         """create_set.
 
@@ -290,6 +292,7 @@ class SetOperations(object):
         set_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_set.
 
@@ -342,6 +345,7 @@ class SetOperations(object):
         object_ids,  # type: List[str]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """add_to_set_by_ids.
 
@@ -401,6 +405,7 @@ class SetOperations(object):
         object_ids,  # type: List[str]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """remove_from_set_by_ids.
 
@@ -460,6 +465,7 @@ class SetOperations(object):
         source_set_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """add_to_set_by_set.
 
@@ -515,6 +521,7 @@ class SetOperations(object):
         source_set_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """remove_from_set_by_set.
 
@@ -569,6 +576,7 @@ class SetOperations(object):
         set_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """get_member_count.
 

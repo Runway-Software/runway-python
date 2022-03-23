@@ -67,11 +67,12 @@ class EnrollmentOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def create_enrollment_session(
@@ -79,6 +80,7 @@ class EnrollmentOperations(object):
         request,  # type: "_models.CreateEnrollmentSessionRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.TokenResponse"
         """create_enrollment_session.
 

@@ -345,11 +345,12 @@ class RepositoryOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def create_action(
@@ -357,6 +358,7 @@ class RepositoryOperations(object):
         request,  # type: "_models.CreateActionRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """create_action.
 
@@ -412,6 +414,7 @@ class RepositoryOperations(object):
         action_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """download_action.
 
@@ -464,6 +467,7 @@ class RepositoryOperations(object):
         action_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.ContentInfo"
         """get_action_content_info.
 
@@ -516,6 +520,7 @@ class RepositoryOperations(object):
         name,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayRepositoryItem"
         """load_by_name.
 
@@ -566,6 +571,7 @@ class RepositoryOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 
@@ -614,6 +620,7 @@ class RepositoryOperations(object):
         repository_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.RunwayRepositoryItem"
         """load.
 
@@ -664,6 +671,7 @@ class RepositoryOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIRepositoryItemQueryView"
         """list.
 
@@ -712,6 +720,7 @@ class RepositoryOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.QueryResponseOfIRepositoryItemQueryView"
         """query.
 
@@ -766,6 +775,7 @@ class RepositoryOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count.
 
@@ -814,6 +824,7 @@ class RepositoryOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """count_query.
 
@@ -868,6 +879,7 @@ class RepositoryOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.IFilterProperty"]
         """get_query_schema.
 
@@ -917,6 +929,7 @@ class RepositoryOperations(object):
         query,  # type: "_models.Query"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> int
         """save_query_to_set.
 

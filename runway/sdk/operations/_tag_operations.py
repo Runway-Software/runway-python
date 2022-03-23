@@ -111,11 +111,12 @@ class TagOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def add_tags(
@@ -123,6 +124,7 @@ class TagOperations(object):
         request,  # type: "_models.TagRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """add_tags.
 
@@ -178,6 +180,7 @@ class TagOperations(object):
         request,  # type: "_models.TagRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """delete_tags.
 
@@ -232,6 +235,7 @@ class TagOperations(object):
         self,
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> List["_models.TagView"]
         """get_tags.
 

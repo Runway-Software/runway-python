@@ -179,11 +179,12 @@ class ResultsOperations(object):
 
     models = _models
 
-    def __init__(self, client, config, serializer, deserializer):
+    def __init__(self, client, config, serializer, deserializer, headers):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
         self._config = config
+        self._headers = headers
 
     @distributed_trace
     def request_action_result(
@@ -191,6 +192,7 @@ class ResultsOperations(object):
         request,  # type: "_models.ActionResultRequest"
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> str
         """request_action_result.
 
@@ -251,6 +253,7 @@ class ResultsOperations(object):
         content_id=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """notify_action_result_ready.
 
@@ -305,6 +308,7 @@ class ResultsOperations(object):
         notify_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> "_models.CheckResultResponse"
         """check_action_result.
 
@@ -356,6 +360,7 @@ class ResultsOperations(object):
         notify_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """notify_download_in_progress.
 
@@ -407,6 +412,7 @@ class ResultsOperations(object):
         notify_id,  # type: str
         **kwargs  # type: Any
     ):
+        kwargs["headers"] = self._headers
         # type: (...) -> IO
         """notify_download_error.
 

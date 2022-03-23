@@ -74,11 +74,15 @@ class PyRunway(object):    # pylint: disable=too-many-instance-attributes
 
     def __init__(
         self,
+        email, # type: str
+        password, #type: str
         platform=None,  # type: Optional[Union[str, "_models.Enum6"]]
         base_url="https://portal.runway.host",  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> None
+        self.password = password
+        self.email = email
         self._config = PyRunwayConfiguration(platform=platform, **kwargs)
         self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
 
@@ -86,28 +90,44 @@ class PyRunway(object):    # pylint: disable=too-many-instance-attributes
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
         self._serialize.client_side_validation = False
-        self.account_asset = AccountAssetOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.asset = AssetOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.authentication = AuthenticationOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.client = ClientOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.connection = ConnectionOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.content = ContentOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.endpoint_asset = EndpointAssetOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.enrollment = EnrollmentOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.group = GroupOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.invitation = InvitationOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.job = JobOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.job_thread = JobThreadOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.logs = LogsOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.remote_shell = RemoteShellOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.repository = RepositoryOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.results = ResultsOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.role = RoleOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.runner = RunnerOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.set = SetOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.tag = TagOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.user = UserOperations(self._client, self._config, self._serialize, self._deserialize)
+        
+        # Instantiate Headers
+        self.headers = self.get_headers()
 
+        self.account_asset = AccountAssetOperations(self._client, self._config, self._serialize, self._deserialize,self.headers)
+        self.asset = AssetOperations(self._client, self._config, self._serialize, self._deserialize,self.headers)
+        self.authentication = AuthenticationOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.client = ClientOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.connection = ConnectionOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.content = ContentOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.endpoint_asset = EndpointAssetOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.enrollment = EnrollmentOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.group = GroupOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.invitation = InvitationOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.job = JobOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.job_thread = JobThreadOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.logs = LogsOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.remote_shell = RemoteShellOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.repository = RepositoryOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.results = ResultsOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.role = RoleOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.runner = RunnerOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.set = SetOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.tag = TagOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+        self.user = UserOperations(self._client, self._config, self._serialize, self._deserialize, self.headers)
+
+    def get_headers(self):
+
+        """
+        """
+
+        login_request = models.LoginRequest(remember=True,email=self.email,password=self.password)
+        header_authentication = AuthenticationOperations(self._client, self._config, self._serialize, self._deserialize, {})
+        authentication_result = header_authentication.login(request=login_request)
+        session_id = authentication_result.session
+        headers = {"Authorization" : "Session " + session_id}
+        header_authentication = None
+        return headers
 
     def _send_request(
         self,
