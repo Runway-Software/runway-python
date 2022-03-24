@@ -4,9 +4,18 @@
 # --------------------------------------------------------------------------
 
 from azure.core.pipeline.transport import HttpRequest
+import os
+
+
 
 def _convert_request(request, files=None):
+
     data = request.content if not files else None
+    
+    # Two lines added for authentication
+    session_id = os.environ.get("RUNWAY_SESSION_ID", None)
+    request.headers["Authorization"] = "Session " + str(session_id)
+
     request = HttpRequest(method=request.method, url=request.url, headers=request.headers, data=data)
     if files:
         request.set_formdata_body(files)

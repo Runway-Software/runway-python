@@ -1,7 +1,7 @@
 import runway.sdk.models as models
 from runway.sdk import PyRunway
 
-runway_obj = PyRunway(email="<email address>", password="<password>")
+runway_obj = PyRunway(email="pjv4yj@virginia.edu", password="Kali@0921")
 
 """
 Example calls for these user functions
