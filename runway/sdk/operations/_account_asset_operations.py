@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_delete_by_set_request(
+def build_deletebyset_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_delete_by_set_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -71,8 +71,8 @@ def build_list_request(
     )
 
 
-def build_delete_by_id_request(
-    account_id,  # type: str
+def build_deletebyid_request(
+    accountid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -80,7 +80,7 @@ def build_delete_by_id_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/accounts/{accountId}")
     path_format_arguments = {
-        "accountId": _SERIALIZER.url("account_id", account_id, 'str'),
+        "accountId": _SERIALIZER.url("accountid", accountid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -98,7 +98,7 @@ def build_delete_by_id_request(
 
 
 def build_load_request(
-    account_id,  # type: str
+    accountid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -106,7 +106,7 @@ def build_load_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/accounts/{accountId}")
     path_format_arguments = {
-        "accountId": _SERIALIZER.url("account_id", account_id, 'str'),
+        "accountId": _SERIALIZER.url("accountid", accountid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -123,7 +123,7 @@ def build_load_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -147,7 +147,7 @@ def build_query_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -155,8 +155,8 @@ def build_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -187,11 +187,11 @@ def build_count_request(
     )
 
 
-def build_count_query_request(
+def build_countquery_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -199,8 +199,8 @@ def build_count_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -211,7 +211,7 @@ def build_count_query_request(
     )
 
 
-def build_get_query_schema_request(
+def build_getqueryschema_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -231,26 +231,26 @@ def build_get_query_schema_request(
     )
 
 
-def build_save_query_to_set_request(
-    set_id,  # type: str
+def build_savequerytoset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/accounts/query/set/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -261,13 +261,13 @@ def build_save_query_to_set_request(
     )
 
 # fmt: on
-class AccountAssetOperations(object):
+class accountAssetOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`account_asset` attribute.
     """
 
@@ -282,19 +282,21 @@ class AccountAssetOperations(object):
 
 
     @distributed_trace
-    def delete_by_set(
+    def deletebyset(
         self,
-        set_request,  # type: "_models.IdRequest"
+        setrequest,  # type: "_models.idRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_set.
+        """deletebyset.
 
-        :param set_request:
-        :type set_request: ~Runway.Py.models.IdRequest
+        :param setrequest:
+        :type setrequest: ~runway.sdk.models.idRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -306,14 +308,14 @@ class AccountAssetOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(set_request, 'IdRequest')
+        _json = self._serialize.body(setrequest, 'idRequest')
 
-        request = build_delete_by_set_request(
-            content_type=content_type,
+        request = build_deletebyset_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.delete_by_set.metadata['url'],
+            template_url=self.deletebyset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -336,7 +338,7 @@ class AccountAssetOperations(object):
 
         return deserialized
 
-    delete_by_set.metadata = {'url': "/api/v2/accounts"}  # type: ignore
+    deletebyset.metadata = {'url': "/api/v2/accounts"}  # type: ignore
 
 
     @distributed_trace
@@ -344,15 +346,15 @@ class AccountAssetOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIAccountAssetQueryView"
+        # type: (...) -> "_models.queryResponseOfIAccountAssetQueryView"
         """list.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIAccountAssetQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIAccountAssetQueryView
+        :return: queryResponseOfIAccountAssetQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIAccountAssetQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIAccountAssetQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIAccountAssetQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -376,7 +378,7 @@ class AccountAssetOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIAccountAssetQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIAccountAssetQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -387,16 +389,16 @@ class AccountAssetOperations(object):
 
 
     @distributed_trace
-    def delete_by_id(
+    def deletebyid(
         self,
-        account_id,  # type: str
+        accountid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_id.
+        """deletebyid.
 
-        :param account_id:
-        :type account_id: str
+        :param accountid:
+        :type accountid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -409,9 +411,9 @@ class AccountAssetOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_delete_by_id_request(
-            account_id=account_id,
-            template_url=self.delete_by_id.metadata['url'],
+        request = build_deletebyid_request(
+            accountid=accountid,
+            template_url=self.deletebyid.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -434,26 +436,26 @@ class AccountAssetOperations(object):
 
         return deserialized
 
-    delete_by_id.metadata = {'url': "/api/v2/accounts/{accountId}"}  # type: ignore
+    deletebyid.metadata = {'url': "/api/v2/accounts/{accountId}"}  # type: ignore
 
 
     @distributed_trace
     def load(
         self,
-        account_id,  # type: str
+        accountid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayAccountAsset"
+        # type: (...) -> "_models.runwayAccountAsset"
         """load.
 
-        :param account_id:
-        :type account_id: str
+        :param accountid:
+        :type accountid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayAccountAsset, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayAccountAsset
+        :return: runwayAccountAsset, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayAccountAsset
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayAccountAsset"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayAccountAsset"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -461,7 +463,7 @@ class AccountAssetOperations(object):
 
         
         request = build_load_request(
-            account_id=account_id,
+            accountid=accountid,
             template_url=self.load.metadata['url'],
         )
         request = _convert_request(request)
@@ -478,7 +480,7 @@ class AccountAssetOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayAccountAsset', pipeline_response)
+        deserialized = self._deserialize('runwayAccountAsset', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -489,27 +491,27 @@ class AccountAssetOperations(object):
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -525,47 +527,49 @@ class AccountAssetOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/accounts/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/accounts/tags"}  # type: ignore
 
 
     @distributed_trace
     def query(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIAccountAssetQueryView"
+        # type: (...) -> "_models.queryResponseOfIAccountAssetQueryView"
         """query.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIAccountAssetQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIAccountAssetQueryView
+        :return: queryResponseOfIAccountAssetQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIAccountAssetQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIAccountAssetQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIAccountAssetQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
         request = build_query_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.query.metadata['url'],
         )
@@ -583,7 +587,7 @@ class AccountAssetOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIAccountAssetQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIAccountAssetQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -641,19 +645,21 @@ class AccountAssetOperations(object):
 
 
     @distributed_trace
-    def count_query(
+    def countquery(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """count_query.
+        """countquery.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -665,14 +671,14 @@ class AccountAssetOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_count_query_request(
-            content_type=content_type,
+        request = build_countquery_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.count_query.metadata['url'],
+            template_url=self.countquery.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -695,31 +701,31 @@ class AccountAssetOperations(object):
 
         return deserialized
 
-    count_query.metadata = {'url': "/api/v2/accounts/count/query"}  # type: ignore
+    countquery.metadata = {'url': "/api/v2/accounts/count/query"}  # type: ignore
 
 
     @distributed_trace
-    def get_query_schema(
+    def getqueryschema(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IFilterProperty"]
-        """get_query_schema.
+        # type: (...) -> List["_models.iFilterProperty"]
+        """getqueryschema.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IFilterProperty, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IFilterProperty]
+        :return: list of iFilterProperty, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iFilterProperty]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IFilterProperty"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iFilterProperty"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_query_schema_request(
-            template_url=self.get_query_schema.metadata['url'],
+        request = build_getqueryschema_request(
+            template_url=self.getqueryschema.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -735,33 +741,35 @@ class AccountAssetOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IFilterProperty]', pipeline_response)
+        deserialized = self._deserialize('[iFilterProperty]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_query_schema.metadata = {'url': "/api/v2/accounts/query/schema"}  # type: ignore
+    getqueryschema.metadata = {'url': "/api/v2/accounts/query/schema"}  # type: ignore
 
 
     @distributed_trace
-    def save_query_to_set(
+    def savequerytoset(
         self,
-        set_id,  # type: str
-        query,  # type: "_models.Query"
+        setid,  # type: str
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """save_query_to_set.
+        """savequerytoset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -773,15 +781,15 @@ class AccountAssetOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_save_query_to_set_request(
-            set_id=set_id,
-            content_type=content_type,
+        request = build_savequerytoset_request(
+            setid=setid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.save_query_to_set.metadata['url'],
+            template_url=self.savequerytoset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -804,5 +812,5 @@ class AccountAssetOperations(object):
 
         return deserialized
 
-    save_query_to_set.metadata = {'url': "/api/v2/accounts/query/set/{setId}"}  # type: ignore
+    savequerytoset.metadata = {'url': "/api/v2/accounts/query/set/{setId}"}  # type: ignore
 

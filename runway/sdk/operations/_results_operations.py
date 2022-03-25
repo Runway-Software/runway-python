@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_request_action_result_request(
+def build_requestactionresult_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "text/plain, application/json, text/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_request_action_result_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,26 +51,26 @@ def build_request_action_result_request(
     )
 
 
-def build_notify_action_result_ready_request(
-    notify_id,  # type: str
+def build_notifyactionresultready_request(
+    notifyid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_id = kwargs.pop('content_id', None)  # type: Optional[str]
+    contentid = kwargs.pop('contentid', None)  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/results/{notifyId}")
     path_format_arguments = {
-        "notifyId": _SERIALIZER.url("notify_id", notify_id, 'str'),
+        "notifyId": _SERIALIZER.url("notifyid", notifyid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct parameters
     _query_parameters = kwargs.pop("params", {})  # type: Dict[str, Any]
-    if content_id is not None:
-        _query_parameters['contentId'] = _SERIALIZER.query("content_id", content_id, 'str')
+    if contentid is not None:
+        _query_parameters['contentId'] = _SERIALIZER.query("contentid", contentid, 'str')
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
@@ -85,8 +85,8 @@ def build_notify_action_result_ready_request(
     )
 
 
-def build_check_action_result_request(
-    notify_id,  # type: str
+def build_checkactionresult_request(
+    notifyid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -94,7 +94,7 @@ def build_check_action_result_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/results/{notifyId}")
     path_format_arguments = {
-        "notifyId": _SERIALIZER.url("notify_id", notify_id, 'str'),
+        "notifyId": _SERIALIZER.url("notifyid", notifyid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -111,8 +111,8 @@ def build_check_action_result_request(
     )
 
 
-def build_notify_download_in_progress_request(
-    notify_id,  # type: str
+def build_notifydownloadinprogress_request(
+    notifyid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -120,7 +120,7 @@ def build_notify_download_in_progress_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/results/progress/{notifyId}")
     path_format_arguments = {
-        "notifyId": _SERIALIZER.url("notify_id", notify_id, 'str'),
+        "notifyId": _SERIALIZER.url("notifyid", notifyid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -137,8 +137,8 @@ def build_notify_download_in_progress_request(
     )
 
 
-def build_notify_download_error_request(
-    notify_id,  # type: str
+def build_notifydownloaderror_request(
+    notifyid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -146,7 +146,7 @@ def build_notify_download_error_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/results/error/{notifyId}")
     path_format_arguments = {
-        "notifyId": _SERIALIZER.url("notify_id", notify_id, 'str'),
+        "notifyId": _SERIALIZER.url("notifyid", notifyid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -163,13 +163,13 @@ def build_notify_download_error_request(
     )
 
 # fmt: on
-class ResultsOperations(object):
+class resultsOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`results` attribute.
     """
 
@@ -184,19 +184,21 @@ class ResultsOperations(object):
 
 
     @distributed_trace
-    def request_action_result(
+    def requestactionresult(
         self,
-        request,  # type: "_models.ActionResultRequest"
+        request,  # type: "_models.actionResultRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> str
-        """request_action_result.
+        """requestactionresult.
 
         :param request:
-        :type request: ~Runway.Py.models.ActionResultRequest
+        :type request: ~runway.sdk.models.actionResultRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json", "text/json", and "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: str, or the result of cls(response)
         :rtype: str
@@ -208,14 +210,14 @@ class ResultsOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'ActionResultRequest')
+        _json = self._serialize.body(request, 'actionResultRequest')
 
-        request = build_request_action_result_request(
-            content_type=content_type,
+        request = build_requestactionresult_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.request_action_result.metadata['url'],
+            template_url=self.requestactionresult.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -242,23 +244,23 @@ class ResultsOperations(object):
 
         return deserialized
 
-    request_action_result.metadata = {'url': "/api/v2/results"}  # type: ignore
+    requestactionresult.metadata = {'url': "/api/v2/results"}  # type: ignore
 
 
     @distributed_trace
-    def notify_action_result_ready(
+    def notifyactionresultready(
         self,
-        notify_id,  # type: str
-        content_id=None,  # type: Optional[str]
+        notifyid,  # type: str
+        contentid=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """notify_action_result_ready.
+        """notifyactionresultready.
 
-        :param notify_id:
-        :type notify_id: str
-        :param content_id:  Default value is None.
-        :type content_id: str
+        :param notifyid:
+        :type notifyid: str
+        :param contentid:  Default value is None.
+        :type contentid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -271,10 +273,10 @@ class ResultsOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_notify_action_result_ready_request(
-            notify_id=notify_id,
-            content_id=content_id,
-            template_url=self.notify_action_result_ready.metadata['url'],
+        request = build_notifyactionresultready_request(
+            notifyid=notifyid,
+            contentid=contentid,
+            template_url=self.notifyactionresultready.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -297,35 +299,35 @@ class ResultsOperations(object):
 
         return deserialized
 
-    notify_action_result_ready.metadata = {'url': "/api/v2/results/{notifyId}"}  # type: ignore
+    notifyactionresultready.metadata = {'url': "/api/v2/results/{notifyId}"}  # type: ignore
 
 
     @distributed_trace
-    def check_action_result(
+    def checkactionresult(
         self,
-        notify_id,  # type: str
+        notifyid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.CheckResultResponse"
-        """check_action_result.
+        # type: (...) -> "_models.checkResultResponse"
+        """checkactionresult.
 
-        :param notify_id:
-        :type notify_id: str
+        :param notifyid:
+        :type notifyid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: CheckResultResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.CheckResultResponse
+        :return: checkResultResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.checkResultResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.CheckResultResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.checkResultResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_check_action_result_request(
-            notify_id=notify_id,
-            template_url=self.check_action_result.metadata['url'],
+        request = build_checkactionresult_request(
+            notifyid=notifyid,
+            template_url=self.checkactionresult.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -341,27 +343,27 @@ class ResultsOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('CheckResultResponse', pipeline_response)
+        deserialized = self._deserialize('checkResultResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    check_action_result.metadata = {'url': "/api/v2/results/{notifyId}"}  # type: ignore
+    checkactionresult.metadata = {'url': "/api/v2/results/{notifyId}"}  # type: ignore
 
 
     @distributed_trace
-    def notify_download_in_progress(
+    def notifydownloadinprogress(
         self,
-        notify_id,  # type: str
+        notifyid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """notify_download_in_progress.
+        """notifydownloadinprogress.
 
-        :param notify_id:
-        :type notify_id: str
+        :param notifyid:
+        :type notifyid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -374,9 +376,9 @@ class ResultsOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_notify_download_in_progress_request(
-            notify_id=notify_id,
-            template_url=self.notify_download_in_progress.metadata['url'],
+        request = build_notifydownloadinprogress_request(
+            notifyid=notifyid,
+            template_url=self.notifydownloadinprogress.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -399,20 +401,20 @@ class ResultsOperations(object):
 
         return deserialized
 
-    notify_download_in_progress.metadata = {'url': "/api/v2/results/progress/{notifyId}"}  # type: ignore
+    notifydownloadinprogress.metadata = {'url': "/api/v2/results/progress/{notifyId}"}  # type: ignore
 
 
     @distributed_trace
-    def notify_download_error(
+    def notifydownloaderror(
         self,
-        notify_id,  # type: str
+        notifyid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """notify_download_error.
+        """notifydownloaderror.
 
-        :param notify_id:
-        :type notify_id: str
+        :param notifyid:
+        :type notifyid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -425,9 +427,9 @@ class ResultsOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_notify_download_error_request(
-            notify_id=notify_id,
-            template_url=self.notify_download_error.metadata['url'],
+        request = build_notifydownloaderror_request(
+            notifyid=notifyid,
+            template_url=self.notifydownloaderror.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -450,5 +452,5 @@ class ResultsOperations(object):
 
         return deserialized
 
-    notify_download_error.metadata = {'url': "/api/v2/results/error/{notifyId}"}  # type: ignore
+    notifydownloaderror.metadata = {'url': "/api/v2/results/error/{notifyId}"}  # type: ignore
 

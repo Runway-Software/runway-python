@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_create_action_request(
+def build_createaction_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_create_action_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,18 +51,18 @@ def build_create_action_request(
     )
 
 
-def build_download_action_request(
-    action_id,  # type: str
+def build_downloadaction_request(
+    actionid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.Enum6"]]
+    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.enum6"]]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/repository/action/{actionId}/download")
     path_format_arguments = {
-        "actionId": _SERIALIZER.url("action_id", action_id, 'str'),
+        "actionId": _SERIALIZER.url("actionid", actionid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -85,18 +85,18 @@ def build_download_action_request(
     )
 
 
-def build_get_action_content_info_request(
-    action_id,  # type: str
+def build_getactioncontentinfo_request(
+    actionid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.Enum6"]]
+    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.enum6"]]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/repository/action/{actionId}/info")
     path_format_arguments = {
-        "actionId": _SERIALIZER.url("action_id", action_id, 'str'),
+        "actionId": _SERIALIZER.url("actionid", actionid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -119,7 +119,7 @@ def build_get_action_content_info_request(
     )
 
 
-def build_load_by_name_request(
+def build_loadbyname_request(
     name,  # type: str
     **kwargs  # type: Any
 ):
@@ -145,7 +145,7 @@ def build_load_by_name_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -166,7 +166,7 @@ def build_get_tags_request(
 
 
 def build_load_request(
-    repository_id,  # type: str
+    repositoryid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -174,7 +174,7 @@ def build_load_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/repository/{repositoryId}")
     path_format_arguments = {
-        "repositoryId": _SERIALIZER.url("repository_id", repository_id, 'str'),
+        "repositoryId": _SERIALIZER.url("repositoryid", repositoryid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -215,7 +215,7 @@ def build_query_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -223,8 +223,8 @@ def build_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -255,11 +255,11 @@ def build_count_request(
     )
 
 
-def build_count_query_request(
+def build_countquery_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -267,8 +267,8 @@ def build_count_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -279,7 +279,7 @@ def build_count_query_request(
     )
 
 
-def build_get_query_schema_request(
+def build_getqueryschema_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -299,26 +299,26 @@ def build_get_query_schema_request(
     )
 
 
-def build_save_query_to_set_request(
-    set_id,  # type: str
+def build_savequerytoset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/repository/query/set/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -329,13 +329,13 @@ def build_save_query_to_set_request(
     )
 
 # fmt: on
-class RepositoryOperations(object):
+class repositoryOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`repository` attribute.
     """
 
@@ -350,19 +350,21 @@ class RepositoryOperations(object):
 
 
     @distributed_trace
-    def create_action(
+    def createaction(
         self,
-        request,  # type: "_models.CreateActionRequest"
+        request,  # type: "_models.createActionRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """create_action.
+        """createaction.
 
         :param request:
-        :type request: ~Runway.Py.models.CreateActionRequest
+        :type request: ~runway.sdk.models.createActionRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -374,14 +376,14 @@ class RepositoryOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'CreateActionRequest')
+        _json = self._serialize.body(request, 'createActionRequest')
 
-        request = build_create_action_request(
-            content_type=content_type,
+        request = build_createaction_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.create_action.metadata['url'],
+            template_url=self.createaction.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -404,20 +406,20 @@ class RepositoryOperations(object):
 
         return deserialized
 
-    create_action.metadata = {'url': "/api/v2/repository/action"}  # type: ignore
+    createaction.metadata = {'url': "/api/v2/repository/action"}  # type: ignore
 
 
     @distributed_trace
-    def download_action(
+    def downloadaction(
         self,
-        action_id,  # type: str
+        actionid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """download_action.
+        """downloadaction.
 
-        :param action_id:
-        :type action_id: str
+        :param actionid:
+        :type actionid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -430,10 +432,10 @@ class RepositoryOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_download_action_request(
-            action_id=action_id,
+        request = build_downloadaction_request(
+            actionid=actionid,
             platform=self._config.platform,
-            template_url=self.download_action.metadata['url'],
+            template_url=self.downloadaction.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -456,36 +458,36 @@ class RepositoryOperations(object):
 
         return deserialized
 
-    download_action.metadata = {'url': "/api/v2/repository/action/{actionId}/download"}  # type: ignore
+    downloadaction.metadata = {'url': "/api/v2/repository/action/{actionId}/download"}  # type: ignore
 
 
     @distributed_trace
-    def get_action_content_info(
+    def getactioncontentinfo(
         self,
-        action_id,  # type: str
+        actionid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.ContentInfo"
-        """get_action_content_info.
+        # type: (...) -> "_models.contentInfo"
+        """getactioncontentinfo.
 
-        :param action_id:
-        :type action_id: str
+        :param actionid:
+        :type actionid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ContentInfo, or the result of cls(response)
-        :rtype: ~Runway.Py.models.ContentInfo
+        :return: contentInfo, or the result of cls(response)
+        :rtype: ~runway.sdk.models.contentInfo
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.ContentInfo"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.contentInfo"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_action_content_info_request(
-            action_id=action_id,
+        request = build_getactioncontentinfo_request(
+            actionid=actionid,
             platform=self._config.platform,
-            template_url=self.get_action_content_info.metadata['url'],
+            template_url=self.getactioncontentinfo.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -501,42 +503,42 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('ContentInfo', pipeline_response)
+        deserialized = self._deserialize('contentInfo', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_action_content_info.metadata = {'url': "/api/v2/repository/action/{actionId}/info"}  # type: ignore
+    getactioncontentinfo.metadata = {'url': "/api/v2/repository/action/{actionId}/info"}  # type: ignore
 
 
     @distributed_trace
-    def load_by_name(
+    def loadbyname(
         self,
         name,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayRepositoryItem"
-        """load_by_name.
+        # type: (...) -> "_models.runwayRepositoryItem"
+        """loadbyname.
 
         :param name:
         :type name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayRepositoryItem, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayRepositoryItem
+        :return: runwayRepositoryItem, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayRepositoryItem
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayRepositoryItem"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayRepositoryItem"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_load_by_name_request(
+        request = build_loadbyname_request(
             name=name,
-            template_url=self.load_by_name.metadata['url'],
+            template_url=self.loadbyname.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -552,38 +554,38 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayRepositoryItem', pipeline_response)
+        deserialized = self._deserialize('runwayRepositoryItem', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    load_by_name.metadata = {'url': "/api/v2/repository/name/{name}"}  # type: ignore
+    loadbyname.metadata = {'url': "/api/v2/repository/name/{name}"}  # type: ignore
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -599,33 +601,33 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/repository/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/repository/tags"}  # type: ignore
 
 
     @distributed_trace
     def load(
         self,
-        repository_id,  # type: str
+        repositoryid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayRepositoryItem"
+        # type: (...) -> "_models.runwayRepositoryItem"
         """load.
 
-        :param repository_id:
-        :type repository_id: str
+        :param repositoryid:
+        :type repositoryid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayRepositoryItem, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayRepositoryItem
+        :return: runwayRepositoryItem, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayRepositoryItem
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayRepositoryItem"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayRepositoryItem"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -633,7 +635,7 @@ class RepositoryOperations(object):
 
         
         request = build_load_request(
-            repository_id=repository_id,
+            repositoryid=repositoryid,
             template_url=self.load.metadata['url'],
         )
         request = _convert_request(request)
@@ -650,7 +652,7 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayRepositoryItem', pipeline_response)
+        deserialized = self._deserialize('runwayRepositoryItem', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -665,15 +667,15 @@ class RepositoryOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIRepositoryItemQueryView"
+        # type: (...) -> "_models.queryResponseOfIRepositoryItemQueryView"
         """list.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIRepositoryItemQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIRepositoryItemQueryView
+        :return: queryResponseOfIRepositoryItemQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIRepositoryItemQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIRepositoryItemQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIRepositoryItemQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -697,7 +699,7 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIRepositoryItemQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIRepositoryItemQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -710,34 +712,36 @@ class RepositoryOperations(object):
     @distributed_trace
     def query(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIRepositoryItemQueryView"
+        # type: (...) -> "_models.queryResponseOfIRepositoryItemQueryView"
         """query.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIRepositoryItemQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIRepositoryItemQueryView
+        :return: queryResponseOfIRepositoryItemQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIRepositoryItemQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIRepositoryItemQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIRepositoryItemQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
         request = build_query_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.query.metadata['url'],
         )
@@ -755,7 +759,7 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIRepositoryItemQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIRepositoryItemQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -813,19 +817,21 @@ class RepositoryOperations(object):
 
 
     @distributed_trace
-    def count_query(
+    def countquery(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """count_query.
+        """countquery.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -837,14 +843,14 @@ class RepositoryOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_count_query_request(
-            content_type=content_type,
+        request = build_countquery_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.count_query.metadata['url'],
+            template_url=self.countquery.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -867,31 +873,31 @@ class RepositoryOperations(object):
 
         return deserialized
 
-    count_query.metadata = {'url': "/api/v2/repository/count/query"}  # type: ignore
+    countquery.metadata = {'url': "/api/v2/repository/count/query"}  # type: ignore
 
 
     @distributed_trace
-    def get_query_schema(
+    def getqueryschema(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IFilterProperty"]
-        """get_query_schema.
+        # type: (...) -> List["_models.iFilterProperty"]
+        """getqueryschema.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IFilterProperty, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IFilterProperty]
+        :return: list of iFilterProperty, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iFilterProperty]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IFilterProperty"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iFilterProperty"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_query_schema_request(
-            template_url=self.get_query_schema.metadata['url'],
+        request = build_getqueryschema_request(
+            template_url=self.getqueryschema.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -907,33 +913,35 @@ class RepositoryOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IFilterProperty]', pipeline_response)
+        deserialized = self._deserialize('[iFilterProperty]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_query_schema.metadata = {'url': "/api/v2/repository/query/schema"}  # type: ignore
+    getqueryschema.metadata = {'url': "/api/v2/repository/query/schema"}  # type: ignore
 
 
     @distributed_trace
-    def save_query_to_set(
+    def savequerytoset(
         self,
-        set_id,  # type: str
-        query,  # type: "_models.Query"
+        setid,  # type: str
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """save_query_to_set.
+        """savequerytoset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -945,15 +953,15 @@ class RepositoryOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_save_query_to_set_request(
-            set_id=set_id,
-            content_type=content_type,
+        request = build_savequerytoset_request(
+            setid=setid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.save_query_to_set.metadata['url'],
+            template_url=self.savequerytoset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -976,5 +984,5 @@ class RepositoryOperations(object):
 
         return deserialized
 
-    save_query_to_set.metadata = {'url': "/api/v2/repository/query/set/{setId}"}  # type: ignore
+    savequerytoset.metadata = {'url': "/api/v2/repository/query/set/{setId}"}  # type: ignore
 

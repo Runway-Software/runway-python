@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_invite_users_request(
+def build_inviteusers_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_invite_users_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,11 +51,11 @@ def build_invite_users_request(
     )
 
 
-def build_answer_invitation_request(
+def build_answerinvitation_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -63,8 +63,8 @@ def build_answer_invitation_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -75,11 +75,11 @@ def build_answer_invitation_request(
     )
 
 
-def build_delete_by_set_request(
+def build_deletebyset_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -87,8 +87,8 @@ def build_delete_by_set_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -119,7 +119,7 @@ def build_list_request(
     )
 
 
-def build_get_invitations_request(
+def build_getinvitations_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -139,26 +139,26 @@ def build_get_invitations_request(
     )
 
 
-def build_add_to_set_by_ids_request(
-    target_set_id,  # type: str
+def build_addtosetbyids_request(
+    targetsetid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/invitations/{targetSetId}/members")
     path_format_arguments = {
-        "targetSetId": _SERIALIZER.url("target_set_id", target_set_id, 'str'),
+        "targetSetId": _SERIALIZER.url("targetsetid", targetsetid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -169,7 +169,7 @@ def build_add_to_set_by_ids_request(
     )
 
 
-def build_has_invitations_request(
+def build_hasinvitations_request(
     email,  # type: str
     **kwargs  # type: Any
 ):
@@ -195,7 +195,7 @@ def build_has_invitations_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -216,7 +216,7 @@ def build_get_tags_request(
 
 
 def build_load_request(
-    invitation_id,  # type: str
+    invitationid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -224,7 +224,7 @@ def build_load_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/invitations/{invitationId}")
     path_format_arguments = {
-        "invitationId": _SERIALIZER.url("invitation_id", invitation_id, 'str'),
+        "invitationId": _SERIALIZER.url("invitationid", invitationid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -245,7 +245,7 @@ def build_query_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -253,8 +253,8 @@ def build_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -285,11 +285,11 @@ def build_count_request(
     )
 
 
-def build_count_query_request(
+def build_countquery_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -297,8 +297,8 @@ def build_count_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -309,7 +309,7 @@ def build_count_query_request(
     )
 
 
-def build_get_query_schema_request(
+def build_getqueryschema_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -329,26 +329,26 @@ def build_get_query_schema_request(
     )
 
 
-def build_save_query_to_set_request(
-    set_id,  # type: str
+def build_savequerytoset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/invitations/query/set/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -359,13 +359,13 @@ def build_save_query_to_set_request(
     )
 
 # fmt: on
-class InvitationOperations(object):
+class invitationOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`invitation` attribute.
     """
 
@@ -380,19 +380,21 @@ class InvitationOperations(object):
 
 
     @distributed_trace
-    def invite_users(
+    def inviteusers(
         self,
-        request,  # type: "_models.GroupInvitationRequest"
+        request,  # type: "_models.groupInvitationRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """invite_users.
+        """inviteusers.
 
         :param request:
-        :type request: ~Runway.Py.models.GroupInvitationRequest
+        :type request: ~runway.sdk.models.groupInvitationRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -404,14 +406,14 @@ class InvitationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'GroupInvitationRequest')
+        _json = self._serialize.body(request, 'groupInvitationRequest')
 
-        request = build_invite_users_request(
-            content_type=content_type,
+        request = build_inviteusers_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.invite_users.metadata['url'],
+            template_url=self.inviteusers.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -434,23 +436,25 @@ class InvitationOperations(object):
 
         return deserialized
 
-    invite_users.metadata = {'url': "/api/v2/invitations"}  # type: ignore
+    inviteusers.metadata = {'url': "/api/v2/invitations"}  # type: ignore
 
 
     @distributed_trace
-    def answer_invitation(
+    def answerinvitation(
         self,
-        request,  # type: "_models.InvitationAnswerRequest"
+        request,  # type: "_models.invitationAnswerRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """answer_invitation.
+        """answerinvitation.
 
         :param request:
-        :type request: ~Runway.Py.models.InvitationAnswerRequest
+        :type request: ~runway.sdk.models.invitationAnswerRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -462,14 +466,14 @@ class InvitationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'InvitationAnswerRequest')
+        _json = self._serialize.body(request, 'invitationAnswerRequest')
 
-        request = build_answer_invitation_request(
-            content_type=content_type,
+        request = build_answerinvitation_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.answer_invitation.metadata['url'],
+            template_url=self.answerinvitation.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -492,23 +496,25 @@ class InvitationOperations(object):
 
         return deserialized
 
-    answer_invitation.metadata = {'url': "/api/v2/invitations"}  # type: ignore
+    answerinvitation.metadata = {'url': "/api/v2/invitations"}  # type: ignore
 
 
     @distributed_trace
-    def delete_by_set(
+    def deletebyset(
         self,
-        set_request,  # type: "_models.IdRequest"
+        setrequest,  # type: "_models.idRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_set.
+        """deletebyset.
 
-        :param set_request:
-        :type set_request: ~Runway.Py.models.IdRequest
+        :param setrequest:
+        :type setrequest: ~runway.sdk.models.idRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -520,14 +526,14 @@ class InvitationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(set_request, 'IdRequest')
+        _json = self._serialize.body(setrequest, 'idRequest')
 
-        request = build_delete_by_set_request(
-            content_type=content_type,
+        request = build_deletebyset_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.delete_by_set.metadata['url'],
+            template_url=self.deletebyset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -550,7 +556,7 @@ class InvitationOperations(object):
 
         return deserialized
 
-    delete_by_set.metadata = {'url': "/api/v2/invitations"}  # type: ignore
+    deletebyset.metadata = {'url': "/api/v2/invitations"}  # type: ignore
 
 
     @distributed_trace
@@ -558,15 +564,15 @@ class InvitationOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIInvitationQueryView"
+        # type: (...) -> "_models.queryResponseOfIInvitationQueryView"
         """list.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIInvitationQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIInvitationQueryView
+        :return: queryResponseOfIInvitationQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIInvitationQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIInvitationQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIInvitationQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -590,7 +596,7 @@ class InvitationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIInvitationQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIInvitationQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -601,27 +607,27 @@ class InvitationOperations(object):
 
 
     @distributed_trace
-    def get_invitations(
+    def getinvitations(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IInvitationQueryView"]
-        """get_invitations.
+        # type: (...) -> List["_models.iInvitationQueryView"]
+        """getinvitations.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IInvitationQueryView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IInvitationQueryView]
+        :return: list of iInvitationQueryView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iInvitationQueryView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IInvitationQueryView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iInvitationQueryView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_invitations_request(
-            template_url=self.get_invitations.metadata['url'],
+        request = build_getinvitations_request(
+            template_url=self.getinvitations.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -637,33 +643,35 @@ class InvitationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IInvitationQueryView]', pipeline_response)
+        deserialized = self._deserialize('[iInvitationQueryView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_invitations.metadata = {'url': "/api/v2/invitations/current"}  # type: ignore
+    getinvitations.metadata = {'url': "/api/v2/invitations/current"}  # type: ignore
 
 
     @distributed_trace
-    def add_to_set_by_ids(
+    def addtosetbyids(
         self,
-        target_set_id,  # type: str
-        object_ids,  # type: List[str]
+        targetsetid,  # type: str
+        objectids,  # type: List[str]
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """add_to_set_by_ids.
+        """addtosetbyids.
 
-        :param target_set_id:
-        :type target_set_id: str
-        :param object_ids:
-        :type object_ids: list[str]
+        :param targetsetid:
+        :type targetsetid: str
+        :param objectids:
+        :type objectids: list[str]
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -675,15 +683,15 @@ class InvitationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(object_ids, '[str]')
+        _json = self._serialize.body(objectids, '[str]')
 
-        request = build_add_to_set_by_ids_request(
-            target_set_id=target_set_id,
-            content_type=content_type,
+        request = build_addtosetbyids_request(
+            targetsetid=targetsetid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.add_to_set_by_ids.metadata['url'],
+            template_url=self.addtosetbyids.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -706,17 +714,17 @@ class InvitationOperations(object):
 
         return deserialized
 
-    add_to_set_by_ids.metadata = {'url': "/api/v2/invitations/{targetSetId}/members"}  # type: ignore
+    addtosetbyids.metadata = {'url': "/api/v2/invitations/{targetSetId}/members"}  # type: ignore
 
 
     @distributed_trace
-    def has_invitations(
+    def hasinvitations(
         self,
         email,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> bool
-        """has_invitations.
+        """hasinvitations.
 
         :param email:
         :type email: str
@@ -732,9 +740,9 @@ class InvitationOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_has_invitations_request(
+        request = build_hasinvitations_request(
             email=email,
-            template_url=self.has_invitations.metadata['url'],
+            template_url=self.hasinvitations.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -757,31 +765,31 @@ class InvitationOperations(object):
 
         return deserialized
 
-    has_invitations.metadata = {'url': "/api/v2/invitations/availability/{email}"}  # type: ignore
+    hasinvitations.metadata = {'url': "/api/v2/invitations/availability/{email}"}  # type: ignore
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -797,33 +805,33 @@ class InvitationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/invitations/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/invitations/tags"}  # type: ignore
 
 
     @distributed_trace
     def load(
         self,
-        invitation_id,  # type: str
+        invitationid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayInvitation"
+        # type: (...) -> "_models.runwayInvitation"
         """load.
 
-        :param invitation_id:
-        :type invitation_id: str
+        :param invitationid:
+        :type invitationid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayInvitation, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayInvitation
+        :return: runwayInvitation, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayInvitation
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayInvitation"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayInvitation"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -831,7 +839,7 @@ class InvitationOperations(object):
 
         
         request = build_load_request(
-            invitation_id=invitation_id,
+            invitationid=invitationid,
             template_url=self.load.metadata['url'],
         )
         request = _convert_request(request)
@@ -848,7 +856,7 @@ class InvitationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayInvitation', pipeline_response)
+        deserialized = self._deserialize('runwayInvitation', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -861,34 +869,36 @@ class InvitationOperations(object):
     @distributed_trace
     def query(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIInvitationQueryView"
+        # type: (...) -> "_models.queryResponseOfIInvitationQueryView"
         """query.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIInvitationQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIInvitationQueryView
+        :return: queryResponseOfIInvitationQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIInvitationQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIInvitationQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIInvitationQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
         request = build_query_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.query.metadata['url'],
         )
@@ -906,7 +916,7 @@ class InvitationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIInvitationQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIInvitationQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -964,19 +974,21 @@ class InvitationOperations(object):
 
 
     @distributed_trace
-    def count_query(
+    def countquery(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """count_query.
+        """countquery.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -988,14 +1000,14 @@ class InvitationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_count_query_request(
-            content_type=content_type,
+        request = build_countquery_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.count_query.metadata['url'],
+            template_url=self.countquery.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1018,31 +1030,31 @@ class InvitationOperations(object):
 
         return deserialized
 
-    count_query.metadata = {'url': "/api/v2/invitations/count/query"}  # type: ignore
+    countquery.metadata = {'url': "/api/v2/invitations/count/query"}  # type: ignore
 
 
     @distributed_trace
-    def get_query_schema(
+    def getqueryschema(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IFilterProperty"]
-        """get_query_schema.
+        # type: (...) -> List["_models.iFilterProperty"]
+        """getqueryschema.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IFilterProperty, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IFilterProperty]
+        :return: list of iFilterProperty, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iFilterProperty]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IFilterProperty"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iFilterProperty"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_query_schema_request(
-            template_url=self.get_query_schema.metadata['url'],
+        request = build_getqueryschema_request(
+            template_url=self.getqueryschema.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1058,33 +1070,35 @@ class InvitationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IFilterProperty]', pipeline_response)
+        deserialized = self._deserialize('[iFilterProperty]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_query_schema.metadata = {'url': "/api/v2/invitations/query/schema"}  # type: ignore
+    getqueryschema.metadata = {'url': "/api/v2/invitations/query/schema"}  # type: ignore
 
 
     @distributed_trace
-    def save_query_to_set(
+    def savequerytoset(
         self,
-        set_id,  # type: str
-        query,  # type: "_models.Query"
+        setid,  # type: str
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """save_query_to_set.
+        """savequerytoset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -1096,15 +1110,15 @@ class InvitationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_save_query_to_set_request(
-            set_id=set_id,
-            content_type=content_type,
+        request = build_savequerytoset_request(
+            setid=setid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.save_query_to_set.metadata['url'],
+            template_url=self.savequerytoset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1127,5 +1141,5 @@ class InvitationOperations(object):
 
         return deserialized
 
-    save_query_to_set.metadata = {'url': "/api/v2/invitations/query/set/{setId}"}  # type: ignore
+    savequerytoset.metadata = {'url': "/api/v2/invitations/query/set/{setId}"}  # type: ignore
 

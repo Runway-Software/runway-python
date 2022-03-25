@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_query_ex_request(
+def build_queryex_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_query_ex_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,8 +51,8 @@ def build_query_ex_request(
     )
 
 
-def build_load_ex_request(
-    group_id,  # type: str
+def build_loadex_request(
+    groupid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -60,7 +60,7 @@ def build_load_ex_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/groups/ex/{groupId}")
     path_format_arguments = {
-        "groupId": _SERIALIZER.url("group_id", group_id, 'str'),
+        "groupId": _SERIALIZER.url("groupid", groupid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -77,11 +77,11 @@ def build_load_ex_request(
     )
 
 
-def build_delete_by_set_request(
+def build_deletebyset_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -89,8 +89,8 @@ def build_delete_by_set_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -105,7 +105,7 @@ def build_create_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -113,8 +113,8 @@ def build_create_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -145,8 +145,8 @@ def build_list_request(
     )
 
 
-def build_delete_by_id_request(
-    group_id,  # type: str
+def build_deletebyid_request(
+    groupid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -154,7 +154,7 @@ def build_delete_by_id_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/groups/{groupId}")
     path_format_arguments = {
-        "groupId": _SERIALIZER.url("group_id", group_id, 'str'),
+        "groupId": _SERIALIZER.url("groupid", groupid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -172,25 +172,25 @@ def build_delete_by_id_request(
 
 
 def build_update_request(
-    group_id,  # type: str
+    groupid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/groups/{groupId}")
     path_format_arguments = {
-        "groupId": _SERIALIZER.url("group_id", group_id, 'str'),
+        "groupId": _SERIALIZER.url("groupid", groupid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -202,7 +202,7 @@ def build_update_request(
 
 
 def build_load_request(
-    group_id,  # type: str
+    groupid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -210,7 +210,7 @@ def build_load_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/groups/{groupId}")
     path_format_arguments = {
-        "groupId": _SERIALIZER.url("group_id", group_id, 'str'),
+        "groupId": _SERIALIZER.url("groupid", groupid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -227,7 +227,7 @@ def build_load_request(
     )
 
 
-def build_get_hierarchy_request(
+def build_gethierarchy_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -247,7 +247,7 @@ def build_get_hierarchy_request(
     )
 
 
-def build_get_hierarchy_ex_request(
+def build_gethierarchyex_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -267,7 +267,7 @@ def build_get_hierarchy_ex_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -291,7 +291,7 @@ def build_query_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -299,8 +299,8 @@ def build_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -331,11 +331,11 @@ def build_count_request(
     )
 
 
-def build_count_query_request(
+def build_countquery_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -343,8 +343,8 @@ def build_count_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -355,7 +355,7 @@ def build_count_query_request(
     )
 
 
-def build_get_query_schema_request(
+def build_getqueryschema_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -375,26 +375,26 @@ def build_get_query_schema_request(
     )
 
 
-def build_save_query_to_set_request(
-    set_id,  # type: str
+def build_savequerytoset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/groups/query/set/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -405,13 +405,13 @@ def build_save_query_to_set_request(
     )
 
 # fmt: on
-class GroupOperations(object):
+class groupOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`group` attribute.
     """
 
@@ -426,38 +426,40 @@ class GroupOperations(object):
 
 
     @distributed_trace
-    def query_ex(
+    def queryex(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfGroupQueryViewEx"
-        """query_ex.
+        # type: (...) -> "_models.queryResponseOfGroupQueryViewEx"
+        """queryex.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfGroupQueryViewEx, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfGroupQueryViewEx
+        :return: queryResponseOfGroupQueryViewEx, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfGroupQueryViewEx
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfGroupQueryViewEx"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfGroupQueryViewEx"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_query_ex_request(
-            content_type=content_type,
+        request = build_queryex_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.query_ex.metadata['url'],
+            template_url=self.queryex.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -473,42 +475,42 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfGroupQueryViewEx', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfGroupQueryViewEx', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    query_ex.metadata = {'url': "/api/v2/groups/query/ex"}  # type: ignore
+    queryex.metadata = {'url': "/api/v2/groups/query/ex"}  # type: ignore
 
 
     @distributed_trace
-    def load_ex(
+    def loadex(
         self,
-        group_id,  # type: str
+        groupid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.GroupQueryViewEx"
-        """load_ex.
+        # type: (...) -> "_models.groupQueryViewEx"
+        """loadex.
 
-        :param group_id:
-        :type group_id: str
+        :param groupid:
+        :type groupid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: GroupQueryViewEx, or the result of cls(response)
-        :rtype: ~Runway.Py.models.GroupQueryViewEx
+        :return: groupQueryViewEx, or the result of cls(response)
+        :rtype: ~runway.sdk.models.groupQueryViewEx
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.GroupQueryViewEx"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.groupQueryViewEx"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_load_ex_request(
-            group_id=group_id,
-            template_url=self.load_ex.metadata['url'],
+        request = build_loadex_request(
+            groupid=groupid,
+            template_url=self.loadex.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -524,30 +526,32 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('GroupQueryViewEx', pipeline_response)
+        deserialized = self._deserialize('groupQueryViewEx', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    load_ex.metadata = {'url': "/api/v2/groups/ex/{groupId}"}  # type: ignore
+    loadex.metadata = {'url': "/api/v2/groups/ex/{groupId}"}  # type: ignore
 
 
     @distributed_trace
-    def delete_by_set(
+    def deletebyset(
         self,
-        set_request,  # type: "_models.IdRequest"
+        setrequest,  # type: "_models.idRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_set.
+        """deletebyset.
 
-        :param set_request:
-        :type set_request: ~Runway.Py.models.IdRequest
+        :param setrequest:
+        :type setrequest: ~runway.sdk.models.idRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -559,14 +563,14 @@ class GroupOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(set_request, 'IdRequest')
+        _json = self._serialize.body(setrequest, 'idRequest')
 
-        request = build_delete_by_set_request(
-            content_type=content_type,
+        request = build_deletebyset_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.delete_by_set.metadata['url'],
+            template_url=self.deletebyset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -589,40 +593,42 @@ class GroupOperations(object):
 
         return deserialized
 
-    delete_by_set.metadata = {'url': "/api/v2/groups"}  # type: ignore
+    deletebyset.metadata = {'url': "/api/v2/groups"}  # type: ignore
 
 
     @distributed_trace
     def create(
         self,
-        request,  # type: "_models.CreateGroupRequest"
+        request,  # type: "_models.createGroupRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.IdResponse"
+        # type: (...) -> "_models.idResponse"
         """create.
 
         :param request:
-        :type request: ~Runway.Py.models.CreateGroupRequest
+        :type request: ~runway.sdk.models.createGroupRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: IdResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.IdResponse
+        :return: idResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.idResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.IdResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.idResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'CreateGroupRequest')
+        _json = self._serialize.body(request, 'createGroupRequest')
 
         request = build_create_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.create.metadata['url'],
         )
@@ -640,7 +646,7 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('IdResponse', pipeline_response)
+        deserialized = self._deserialize('idResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -655,15 +661,15 @@ class GroupOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIGroupQueryView"
+        # type: (...) -> "_models.queryResponseOfIGroupQueryView"
         """list.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIGroupQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIGroupQueryView
+        :return: queryResponseOfIGroupQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIGroupQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIGroupQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIGroupQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -687,7 +693,7 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIGroupQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIGroupQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -698,16 +704,16 @@ class GroupOperations(object):
 
 
     @distributed_trace
-    def delete_by_id(
+    def deletebyid(
         self,
-        group_id,  # type: str
+        groupid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_id.
+        """deletebyid.
 
-        :param group_id:
-        :type group_id: str
+        :param groupid:
+        :type groupid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -720,9 +726,9 @@ class GroupOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_delete_by_id_request(
-            group_id=group_id,
-            template_url=self.delete_by_id.metadata['url'],
+        request = build_deletebyid_request(
+            groupid=groupid,
+            template_url=self.deletebyid.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -745,26 +751,28 @@ class GroupOperations(object):
 
         return deserialized
 
-    delete_by_id.metadata = {'url': "/api/v2/groups/{groupId}"}  # type: ignore
+    deletebyid.metadata = {'url': "/api/v2/groups/{groupId}"}  # type: ignore
 
 
     @distributed_trace
     def update(
         self,
-        group_id,  # type: str
-        request,  # type: "_models.UpdateGroupRequest"
+        groupid,  # type: str
+        request,  # type: "_models.updateGroupRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
         """update.
 
-        :param group_id:
-        :type group_id: str
+        :param groupid:
+        :type groupid: str
         :param request:
-        :type request: ~Runway.Py.models.UpdateGroupRequest
+        :type request: ~runway.sdk.models.updateGroupRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -776,13 +784,13 @@ class GroupOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'UpdateGroupRequest')
+        _json = self._serialize.body(request, 'updateGroupRequest')
 
         request = build_update_request(
-            group_id=group_id,
-            content_type=content_type,
+            groupid=groupid,
+            contenttype=contenttype,
             json=_json,
             template_url=self.update.metadata['url'],
         )
@@ -813,20 +821,20 @@ class GroupOperations(object):
     @distributed_trace
     def load(
         self,
-        group_id,  # type: str
+        groupid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayGroup"
+        # type: (...) -> "_models.runwayGroup"
         """load.
 
-        :param group_id:
-        :type group_id: str
+        :param groupid:
+        :type groupid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayGroup, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayGroup
+        :return: runwayGroup, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayGroup
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayGroup"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayGroup"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -834,7 +842,7 @@ class GroupOperations(object):
 
         
         request = build_load_request(
-            group_id=group_id,
+            groupid=groupid,
             template_url=self.load.metadata['url'],
         )
         request = _convert_request(request)
@@ -851,7 +859,7 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayGroup', pipeline_response)
+        deserialized = self._deserialize('runwayGroup', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -862,27 +870,27 @@ class GroupOperations(object):
 
 
     @distributed_trace
-    def get_hierarchy(
+    def gethierarchy(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.RunwayGroup"]
-        """get_hierarchy.
+        # type: (...) -> List["_models.runwayGroup"]
+        """gethierarchy.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of RunwayGroup, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.RunwayGroup]
+        :return: list of runwayGroup, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.runwayGroup]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.RunwayGroup"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.runwayGroup"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_hierarchy_request(
-            template_url=self.get_hierarchy.metadata['url'],
+        request = build_gethierarchy_request(
+            template_url=self.gethierarchy.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -898,38 +906,38 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[RunwayGroup]', pipeline_response)
+        deserialized = self._deserialize('[runwayGroup]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_hierarchy.metadata = {'url': "/api/v2/groups/hierarchy"}  # type: ignore
+    gethierarchy.metadata = {'url': "/api/v2/groups/hierarchy"}  # type: ignore
 
 
     @distributed_trace
-    def get_hierarchy_ex(
+    def gethierarchyex(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.GroupHierarchyViewEx"]
-        """get_hierarchy_ex.
+        # type: (...) -> List["_models.groupHierarchyViewEx"]
+        """gethierarchyex.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of GroupHierarchyViewEx, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.GroupHierarchyViewEx]
+        :return: list of groupHierarchyViewEx, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.groupHierarchyViewEx]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.GroupHierarchyViewEx"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.groupHierarchyViewEx"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_hierarchy_ex_request(
-            template_url=self.get_hierarchy_ex.metadata['url'],
+        request = build_gethierarchyex_request(
+            template_url=self.gethierarchyex.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -945,38 +953,38 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[GroupHierarchyViewEx]', pipeline_response)
+        deserialized = self._deserialize('[groupHierarchyViewEx]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_hierarchy_ex.metadata = {'url': "/api/v2/groups/hierarchyex"}  # type: ignore
+    gethierarchyex.metadata = {'url': "/api/v2/groups/hierarchyex"}  # type: ignore
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -992,47 +1000,49 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/groups/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/groups/tags"}  # type: ignore
 
 
     @distributed_trace
     def query(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIGroupQueryView"
+        # type: (...) -> "_models.queryResponseOfIGroupQueryView"
         """query.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIGroupQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIGroupQueryView
+        :return: queryResponseOfIGroupQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIGroupQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIGroupQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIGroupQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
         request = build_query_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.query.metadata['url'],
         )
@@ -1050,7 +1060,7 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIGroupQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIGroupQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -1108,19 +1118,21 @@ class GroupOperations(object):
 
 
     @distributed_trace
-    def count_query(
+    def countquery(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """count_query.
+        """countquery.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -1132,14 +1144,14 @@ class GroupOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_count_query_request(
-            content_type=content_type,
+        request = build_countquery_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.count_query.metadata['url'],
+            template_url=self.countquery.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1162,31 +1174,31 @@ class GroupOperations(object):
 
         return deserialized
 
-    count_query.metadata = {'url': "/api/v2/groups/count/query"}  # type: ignore
+    countquery.metadata = {'url': "/api/v2/groups/count/query"}  # type: ignore
 
 
     @distributed_trace
-    def get_query_schema(
+    def getqueryschema(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IFilterProperty"]
-        """get_query_schema.
+        # type: (...) -> List["_models.iFilterProperty"]
+        """getqueryschema.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IFilterProperty, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IFilterProperty]
+        :return: list of iFilterProperty, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iFilterProperty]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IFilterProperty"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iFilterProperty"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_query_schema_request(
-            template_url=self.get_query_schema.metadata['url'],
+        request = build_getqueryschema_request(
+            template_url=self.getqueryschema.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1202,33 +1214,35 @@ class GroupOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IFilterProperty]', pipeline_response)
+        deserialized = self._deserialize('[iFilterProperty]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_query_schema.metadata = {'url': "/api/v2/groups/query/schema"}  # type: ignore
+    getqueryschema.metadata = {'url': "/api/v2/groups/query/schema"}  # type: ignore
 
 
     @distributed_trace
-    def save_query_to_set(
+    def savequerytoset(
         self,
-        set_id,  # type: str
-        query,  # type: "_models.Query"
+        setid,  # type: str
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """save_query_to_set.
+        """savequerytoset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -1240,15 +1254,15 @@ class GroupOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_save_query_to_set_request(
-            set_id=set_id,
-            content_type=content_type,
+        request = build_savequerytoset_request(
+            setid=setid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.save_query_to_set.metadata['url'],
+            template_url=self.savequerytoset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1271,5 +1285,5 @@ class GroupOperations(object):
 
         return deserialized
 
-    save_query_to_set.metadata = {'url': "/api/v2/groups/query/set/{setId}"}  # type: ignore
+    savequerytoset.metadata = {'url': "/api/v2/groups/query/set/{setId}"}  # type: ignore
 

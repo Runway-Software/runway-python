@@ -27,8 +27,8 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_delete_by_id_request(
-    thread_id,  # type: str
+def build_deletebyid_request(
+    threadid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -36,7 +36,7 @@ def build_delete_by_id_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/{threadId}")
     path_format_arguments = {
-        "threadId": _SERIALIZER.url("thread_id", thread_id, 'str'),
+        "threadId": _SERIALIZER.url("threadid", threadid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -54,7 +54,7 @@ def build_delete_by_id_request(
 
 
 def build_load_request(
-    thread_id,  # type: str
+    threadid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -62,7 +62,7 @@ def build_load_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/{threadId}")
     path_format_arguments = {
-        "threadId": _SERIALIZER.url("thread_id", thread_id, 'str'),
+        "threadId": _SERIALIZER.url("threadid", threadid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -79,8 +79,8 @@ def build_load_request(
     )
 
 
-def build_delete_by_job_request(
-    job_id,  # type: str
+def build_deletebyjob_request(
+    jobid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -88,7 +88,7 @@ def build_delete_by_job_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/job/{jobId}")
     path_format_arguments = {
-        "jobId": _SERIALIZER.url("job_id", job_id, 'str'),
+        "jobId": _SERIALIZER.url("jobid", jobid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -105,8 +105,8 @@ def build_delete_by_job_request(
     )
 
 
-def build_get_threads_for_job_request(
-    job_id,  # type: str
+def build_getthreadsforjob_request(
+    jobid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -114,7 +114,7 @@ def build_get_threads_for_job_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/job/{jobId}")
     path_format_arguments = {
-        "jobId": _SERIALIZER.url("job_id", job_id, 'str'),
+        "jobId": _SERIALIZER.url("jobid", jobid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -131,7 +131,7 @@ def build_get_threads_for_job_request(
     )
 
 
-def build_get_auto_spawn_threads_request(
+def build_getautospawnthreads_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -151,8 +151,8 @@ def build_get_auto_spawn_threads_request(
     )
 
 
-def build_download_result_for_thread_request(
-    thread_id,  # type: str
+def build_downloadresultforthread_request(
+    threadid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -160,7 +160,7 @@ def build_download_result_for_thread_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/{threadId}/lastresult")
     path_format_arguments = {
-        "threadId": _SERIALIZER.url("thread_id", thread_id, 'str'),
+        "threadId": _SERIALIZER.url("threadid", threadid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -177,8 +177,8 @@ def build_download_result_for_thread_request(
     )
 
 
-def build_get_last_log_for_thread_request(
-    thread_id,  # type: str
+def build_getlastlogforthread_request(
+    threadid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -186,7 +186,7 @@ def build_get_last_log_for_thread_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/{threadId}/lastlog")
     path_format_arguments = {
-        "threadId": _SERIALIZER.url("thread_id", thread_id, 'str'),
+        "threadId": _SERIALIZER.url("threadid", threadid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -203,8 +203,8 @@ def build_get_last_log_for_thread_request(
     )
 
 
-def build_get_node_name_for_thread_request(
-    thread_id,  # type: str
+def build_getnodenameforthread_request(
+    threadid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -212,7 +212,7 @@ def build_get_node_name_for_thread_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/{threadId}/nodename")
     path_format_arguments = {
-        "threadId": _SERIALIZER.url("thread_id", thread_id, 'str'),
+        "threadId": _SERIALIZER.url("threadid", threadid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -229,11 +229,11 @@ def build_get_node_name_for_thread_request(
     )
 
 
-def build_step_job_thread_request(
+def build_stepjobthread_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -241,8 +241,8 @@ def build_step_job_thread_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -253,7 +253,7 @@ def build_step_job_thread_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -297,7 +297,7 @@ def build_query_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -305,8 +305,8 @@ def build_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -337,11 +337,11 @@ def build_count_request(
     )
 
 
-def build_count_query_request(
+def build_countquery_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -349,8 +349,8 @@ def build_count_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -361,7 +361,7 @@ def build_count_query_request(
     )
 
 
-def build_get_query_schema_request(
+def build_getqueryschema_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -381,26 +381,26 @@ def build_get_query_schema_request(
     )
 
 
-def build_save_query_to_set_request(
-    set_id,  # type: str
+def build_savequerytoset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/threads/query/set/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -411,13 +411,13 @@ def build_save_query_to_set_request(
     )
 
 # fmt: on
-class JobThreadOperations(object):
+class jobThreadOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`job_thread` attribute.
     """
 
@@ -432,16 +432,16 @@ class JobThreadOperations(object):
 
 
     @distributed_trace
-    def delete_by_id(
+    def deletebyid(
         self,
-        thread_id,  # type: str
+        threadid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_id.
+        """deletebyid.
 
-        :param thread_id:
-        :type thread_id: str
+        :param threadid:
+        :type threadid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -454,9 +454,9 @@ class JobThreadOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_delete_by_id_request(
-            thread_id=thread_id,
-            template_url=self.delete_by_id.metadata['url'],
+        request = build_deletebyid_request(
+            threadid=threadid,
+            template_url=self.deletebyid.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -479,26 +479,26 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    delete_by_id.metadata = {'url': "/api/v2/threads/{threadId}"}  # type: ignore
+    deletebyid.metadata = {'url': "/api/v2/threads/{threadId}"}  # type: ignore
 
 
     @distributed_trace
     def load(
         self,
-        thread_id,  # type: str
+        threadid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayJobThread"
+        # type: (...) -> "_models.runwayJobThread"
         """load.
 
-        :param thread_id:
-        :type thread_id: str
+        :param threadid:
+        :type threadid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayJobThread, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayJobThread
+        :return: runwayJobThread, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayJobThread
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayJobThread"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayJobThread"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -506,7 +506,7 @@ class JobThreadOperations(object):
 
         
         request = build_load_request(
-            thread_id=thread_id,
+            threadid=threadid,
             template_url=self.load.metadata['url'],
         )
         request = _convert_request(request)
@@ -523,7 +523,7 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayJobThread', pipeline_response)
+        deserialized = self._deserialize('runwayJobThread', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -534,16 +534,16 @@ class JobThreadOperations(object):
 
 
     @distributed_trace
-    def delete_by_job(
+    def deletebyjob(
         self,
-        job_id,  # type: str
+        jobid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_job.
+        """deletebyjob.
 
-        :param job_id:
-        :type job_id: str
+        :param jobid:
+        :type jobid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -556,9 +556,9 @@ class JobThreadOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_delete_by_job_request(
-            job_id=job_id,
-            template_url=self.delete_by_job.metadata['url'],
+        request = build_deletebyjob_request(
+            jobid=jobid,
+            template_url=self.deletebyjob.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -581,35 +581,35 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    delete_by_job.metadata = {'url': "/api/v2/threads/job/{jobId}"}  # type: ignore
+    deletebyjob.metadata = {'url': "/api/v2/threads/job/{jobId}"}  # type: ignore
 
 
     @distributed_trace
-    def get_threads_for_job(
+    def getthreadsforjob(
         self,
-        job_id,  # type: str
+        jobid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.RunwayJobThread"]
-        """get_threads_for_job.
+        # type: (...) -> List["_models.runwayJobThread"]
+        """getthreadsforjob.
 
-        :param job_id:
-        :type job_id: str
+        :param jobid:
+        :type jobid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of RunwayJobThread, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.RunwayJobThread]
+        :return: list of runwayJobThread, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.runwayJobThread]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.RunwayJobThread"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.runwayJobThread"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_threads_for_job_request(
-            job_id=job_id,
-            template_url=self.get_threads_for_job.metadata['url'],
+        request = build_getthreadsforjob_request(
+            jobid=jobid,
+            template_url=self.getthreadsforjob.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -625,38 +625,38 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[RunwayJobThread]', pipeline_response)
+        deserialized = self._deserialize('[runwayJobThread]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_threads_for_job.metadata = {'url': "/api/v2/threads/job/{jobId}"}  # type: ignore
+    getthreadsforjob.metadata = {'url': "/api/v2/threads/job/{jobId}"}  # type: ignore
 
 
     @distributed_trace
-    def get_auto_spawn_threads(
+    def getautospawnthreads(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.ThreadView"]
-        """get_auto_spawn_threads.
+        # type: (...) -> List["_models.threadView"]
+        """getautospawnthreads.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of ThreadView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.ThreadView]
+        :return: list of threadView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.threadView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.ThreadView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.threadView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_auto_spawn_threads_request(
-            template_url=self.get_auto_spawn_threads.metadata['url'],
+        request = build_getautospawnthreads_request(
+            template_url=self.getautospawnthreads.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -672,27 +672,27 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[ThreadView]', pipeline_response)
+        deserialized = self._deserialize('[threadView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_auto_spawn_threads.metadata = {'url': "/api/v2/threads/auto"}  # type: ignore
+    getautospawnthreads.metadata = {'url': "/api/v2/threads/auto"}  # type: ignore
 
 
     @distributed_trace
-    def download_result_for_thread(
+    def downloadresultforthread(
         self,
-        thread_id,  # type: str
+        threadid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """download_result_for_thread.
+        """downloadresultforthread.
 
-        :param thread_id:
-        :type thread_id: str
+        :param threadid:
+        :type threadid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -705,9 +705,9 @@ class JobThreadOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_download_result_for_thread_request(
-            thread_id=thread_id,
-            template_url=self.download_result_for_thread.metadata['url'],
+        request = build_downloadresultforthread_request(
+            threadid=threadid,
+            template_url=self.downloadresultforthread.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -730,20 +730,20 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    download_result_for_thread.metadata = {'url': "/api/v2/threads/{threadId}/lastresult"}  # type: ignore
+    downloadresultforthread.metadata = {'url': "/api/v2/threads/{threadId}/lastresult"}  # type: ignore
 
 
     @distributed_trace
-    def get_last_log_for_thread(
+    def getlastlogforthread(
         self,
-        thread_id,  # type: str
+        threadid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """get_last_log_for_thread.
+        """getlastlogforthread.
 
-        :param thread_id:
-        :type thread_id: str
+        :param threadid:
+        :type threadid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -756,9 +756,9 @@ class JobThreadOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_last_log_for_thread_request(
-            thread_id=thread_id,
-            template_url=self.get_last_log_for_thread.metadata['url'],
+        request = build_getlastlogforthread_request(
+            threadid=threadid,
+            template_url=self.getlastlogforthread.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -781,20 +781,20 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    get_last_log_for_thread.metadata = {'url': "/api/v2/threads/{threadId}/lastlog"}  # type: ignore
+    getlastlogforthread.metadata = {'url': "/api/v2/threads/{threadId}/lastlog"}  # type: ignore
 
 
     @distributed_trace
-    def get_node_name_for_thread(
+    def getnodenameforthread(
         self,
-        thread_id,  # type: str
+        threadid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> str
-        """get_node_name_for_thread.
+        """getnodenameforthread.
 
-        :param thread_id:
-        :type thread_id: str
+        :param threadid:
+        :type threadid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: str, or the result of cls(response)
         :rtype: str
@@ -807,9 +807,9 @@ class JobThreadOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_node_name_for_thread_request(
-            thread_id=thread_id,
-            template_url=self.get_node_name_for_thread.metadata['url'],
+        request = build_getnodenameforthread_request(
+            threadid=threadid,
+            template_url=self.getnodenameforthread.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -832,23 +832,25 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    get_node_name_for_thread.metadata = {'url': "/api/v2/threads/{threadId}/nodename"}  # type: ignore
+    getnodenameforthread.metadata = {'url': "/api/v2/threads/{threadId}/nodename"}  # type: ignore
 
 
     @distributed_trace
-    def step_job_thread(
+    def stepjobthread(
         self,
-        request,  # type: "_models.StepThreadRequest"
+        request,  # type: "_models.stepThreadRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """step_job_thread.
+        """stepjobthread.
 
         :param request:
-        :type request: ~Runway.Py.models.StepThreadRequest
+        :type request: ~runway.sdk.models.stepThreadRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -860,14 +862,14 @@ class JobThreadOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'StepThreadRequest')
+        _json = self._serialize.body(request, 'stepThreadRequest')
 
-        request = build_step_job_thread_request(
-            content_type=content_type,
+        request = build_stepjobthread_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.step_job_thread.metadata['url'],
+            template_url=self.stepjobthread.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -890,31 +892,31 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    step_job_thread.metadata = {'url': "/api/v2/threads/step"}  # type: ignore
+    stepjobthread.metadata = {'url': "/api/v2/threads/step"}  # type: ignore
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -930,14 +932,14 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/threads/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/threads/tags"}  # type: ignore
 
 
     @distributed_trace
@@ -945,15 +947,15 @@ class JobThreadOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIJobThreadQueryView"
+        # type: (...) -> "_models.queryResponseOfIJobThreadQueryView"
         """list.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIJobThreadQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIJobThreadQueryView
+        :return: queryResponseOfIJobThreadQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIJobThreadQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIJobThreadQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIJobThreadQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -977,7 +979,7 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIJobThreadQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIJobThreadQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -990,34 +992,36 @@ class JobThreadOperations(object):
     @distributed_trace
     def query(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIJobThreadQueryView"
+        # type: (...) -> "_models.queryResponseOfIJobThreadQueryView"
         """query.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIJobThreadQueryView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIJobThreadQueryView
+        :return: queryResponseOfIJobThreadQueryView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIJobThreadQueryView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIJobThreadQueryView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIJobThreadQueryView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
         request = build_query_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.query.metadata['url'],
         )
@@ -1035,7 +1039,7 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIJobThreadQueryView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIJobThreadQueryView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -1093,19 +1097,21 @@ class JobThreadOperations(object):
 
 
     @distributed_trace
-    def count_query(
+    def countquery(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """count_query.
+        """countquery.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -1117,14 +1123,14 @@ class JobThreadOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_count_query_request(
-            content_type=content_type,
+        request = build_countquery_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.count_query.metadata['url'],
+            template_url=self.countquery.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1147,31 +1153,31 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    count_query.metadata = {'url': "/api/v2/threads/count/query"}  # type: ignore
+    countquery.metadata = {'url': "/api/v2/threads/count/query"}  # type: ignore
 
 
     @distributed_trace
-    def get_query_schema(
+    def getqueryschema(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IFilterProperty"]
-        """get_query_schema.
+        # type: (...) -> List["_models.iFilterProperty"]
+        """getqueryschema.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IFilterProperty, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IFilterProperty]
+        :return: list of iFilterProperty, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iFilterProperty]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IFilterProperty"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iFilterProperty"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_query_schema_request(
-            template_url=self.get_query_schema.metadata['url'],
+        request = build_getqueryschema_request(
+            template_url=self.getqueryschema.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1187,33 +1193,35 @@ class JobThreadOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IFilterProperty]', pipeline_response)
+        deserialized = self._deserialize('[iFilterProperty]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_query_schema.metadata = {'url': "/api/v2/threads/query/schema"}  # type: ignore
+    getqueryschema.metadata = {'url': "/api/v2/threads/query/schema"}  # type: ignore
 
 
     @distributed_trace
-    def save_query_to_set(
+    def savequerytoset(
         self,
-        set_id,  # type: str
-        query,  # type: "_models.Query"
+        setid,  # type: str
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """save_query_to_set.
+        """savequerytoset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -1225,15 +1233,15 @@ class JobThreadOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_save_query_to_set_request(
-            set_id=set_id,
-            content_type=content_type,
+        request = build_savequerytoset_request(
+            setid=setid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.save_query_to_set.metadata['url'],
+            template_url=self.savequerytoset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -1256,5 +1264,5 @@ class JobThreadOperations(object):
 
         return deserialized
 
-    save_query_to_set.metadata = {'url': "/api/v2/threads/query/set/{setId}"}  # type: ignore
+    savequerytoset.metadata = {'url': "/api/v2/threads/query/set/{setId}"}  # type: ignore
 

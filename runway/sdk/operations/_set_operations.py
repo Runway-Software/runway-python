@@ -27,7 +27,7 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_create_set_request(
+def build_createset_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -47,8 +47,8 @@ def build_create_set_request(
     )
 
 
-def build_delete_set_request(
-    set_id,  # type: str
+def build_deleteset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -56,7 +56,7 @@ def build_delete_set_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/sets/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -73,26 +73,26 @@ def build_delete_set_request(
     )
 
 
-def build_add_to_set_by_ids_request(
-    target_set_id,  # type: str
+def build_addtosetbyids_request(
+    targetsetid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/sets/{targetSetId}/members")
     path_format_arguments = {
-        "targetSetId": _SERIALIZER.url("target_set_id", target_set_id, 'str'),
+        "targetSetId": _SERIALIZER.url("targetsetid", targetsetid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -103,26 +103,26 @@ def build_add_to_set_by_ids_request(
     )
 
 
-def build_remove_from_set_by_ids_request(
-    target_set_id,  # type: str
+def build_removefromsetbyids_request(
+    targetsetid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/sets/{targetSetId}/members")
     path_format_arguments = {
-        "targetSetId": _SERIALIZER.url("target_set_id", target_set_id, 'str'),
+        "targetSetId": _SERIALIZER.url("targetsetid", targetsetid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -133,9 +133,9 @@ def build_remove_from_set_by_ids_request(
     )
 
 
-def build_add_to_set_by_set_request(
-    target_set_id,  # type: str
-    source_set_id,  # type: str
+def build_addtosetbyset_request(
+    targetsetid,  # type: str
+    sourcesetid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -143,8 +143,8 @@ def build_add_to_set_by_set_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/sets/{targetSetId}/members/set/{sourceSetId}")
     path_format_arguments = {
-        "targetSetId": _SERIALIZER.url("target_set_id", target_set_id, 'str'),
-        "sourceSetId": _SERIALIZER.url("source_set_id", source_set_id, 'str'),
+        "targetSetId": _SERIALIZER.url("targetsetid", targetsetid, 'str'),
+        "sourceSetId": _SERIALIZER.url("sourcesetid", sourcesetid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -161,9 +161,9 @@ def build_add_to_set_by_set_request(
     )
 
 
-def build_remove_from_set_by_set_request(
-    target_set_id,  # type: str
-    source_set_id,  # type: str
+def build_removefromsetbyset_request(
+    targetsetid,  # type: str
+    sourcesetid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -171,8 +171,8 @@ def build_remove_from_set_by_set_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/sets/{targetSetId}/members/set/{sourceSetId}")
     path_format_arguments = {
-        "targetSetId": _SERIALIZER.url("target_set_id", target_set_id, 'str'),
-        "sourceSetId": _SERIALIZER.url("source_set_id", source_set_id, 'str'),
+        "targetSetId": _SERIALIZER.url("targetsetid", targetsetid, 'str'),
+        "sourceSetId": _SERIALIZER.url("sourcesetid", sourcesetid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -189,8 +189,8 @@ def build_remove_from_set_by_set_request(
     )
 
 
-def build_get_member_count_request(
-    set_id,  # type: str
+def build_getmembercount_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -198,7 +198,7 @@ def build_get_member_count_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/sets/{setId}/count")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -215,13 +215,13 @@ def build_get_member_count_request(
     )
 
 # fmt: on
-class SetOperations(object):
+class setOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`set` attribute.
     """
 
@@ -236,27 +236,27 @@ class SetOperations(object):
 
 
     @distributed_trace
-    def create_set(
+    def createset(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.IdResponse"
-        """create_set.
+        # type: (...) -> "_models.idResponse"
+        """createset.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: IdResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.IdResponse
+        :return: idResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.idResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.IdResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.idResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_create_set_request(
-            template_url=self.create_set.metadata['url'],
+        request = build_createset_request(
+            template_url=self.createset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -272,27 +272,27 @@ class SetOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('IdResponse', pipeline_response)
+        deserialized = self._deserialize('idResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    create_set.metadata = {'url': "/api/v2/sets"}  # type: ignore
+    createset.metadata = {'url': "/api/v2/sets"}  # type: ignore
 
 
     @distributed_trace
-    def delete_set(
+    def deleteset(
         self,
-        set_id,  # type: str
+        setid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_set.
+        """deleteset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -305,9 +305,9 @@ class SetOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_delete_set_request(
-            set_id=set_id,
-            template_url=self.delete_set.metadata['url'],
+        request = build_deleteset_request(
+            setid=setid,
+            template_url=self.deleteset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -330,26 +330,28 @@ class SetOperations(object):
 
         return deserialized
 
-    delete_set.metadata = {'url': "/api/v2/sets/{setId}"}  # type: ignore
+    deleteset.metadata = {'url': "/api/v2/sets/{setId}"}  # type: ignore
 
 
     @distributed_trace
-    def add_to_set_by_ids(
+    def addtosetbyids(
         self,
-        target_set_id,  # type: str
-        object_ids,  # type: List[str]
+        targetsetid,  # type: str
+        objectids,  # type: List[str]
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """add_to_set_by_ids.
+        """addtosetbyids.
 
-        :param target_set_id:
-        :type target_set_id: str
-        :param object_ids:
-        :type object_ids: list[str]
+        :param targetsetid:
+        :type targetsetid: str
+        :param objectids:
+        :type objectids: list[str]
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -361,15 +363,15 @@ class SetOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(object_ids, '[str]')
+        _json = self._serialize.body(objectids, '[str]')
 
-        request = build_add_to_set_by_ids_request(
-            target_set_id=target_set_id,
-            content_type=content_type,
+        request = build_addtosetbyids_request(
+            targetsetid=targetsetid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.add_to_set_by_ids.metadata['url'],
+            template_url=self.addtosetbyids.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -392,26 +394,28 @@ class SetOperations(object):
 
         return deserialized
 
-    add_to_set_by_ids.metadata = {'url': "/api/v2/sets/{targetSetId}/members"}  # type: ignore
+    addtosetbyids.metadata = {'url': "/api/v2/sets/{targetSetId}/members"}  # type: ignore
 
 
     @distributed_trace
-    def remove_from_set_by_ids(
+    def removefromsetbyids(
         self,
-        target_set_id,  # type: str
-        object_ids,  # type: List[str]
+        targetsetid,  # type: str
+        objectids,  # type: List[str]
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """remove_from_set_by_ids.
+        """removefromsetbyids.
 
-        :param target_set_id:
-        :type target_set_id: str
-        :param object_ids:
-        :type object_ids: list[str]
+        :param targetsetid:
+        :type targetsetid: str
+        :param objectids:
+        :type objectids: list[str]
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -423,15 +427,15 @@ class SetOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(object_ids, '[str]')
+        _json = self._serialize.body(objectids, '[str]')
 
-        request = build_remove_from_set_by_ids_request(
-            target_set_id=target_set_id,
-            content_type=content_type,
+        request = build_removefromsetbyids_request(
+            targetsetid=targetsetid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.remove_from_set_by_ids.metadata['url'],
+            template_url=self.removefromsetbyids.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -454,23 +458,23 @@ class SetOperations(object):
 
         return deserialized
 
-    remove_from_set_by_ids.metadata = {'url': "/api/v2/sets/{targetSetId}/members"}  # type: ignore
+    removefromsetbyids.metadata = {'url': "/api/v2/sets/{targetSetId}/members"}  # type: ignore
 
 
     @distributed_trace
-    def add_to_set_by_set(
+    def addtosetbyset(
         self,
-        target_set_id,  # type: str
-        source_set_id,  # type: str
+        targetsetid,  # type: str
+        sourcesetid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """add_to_set_by_set.
+        """addtosetbyset.
 
-        :param target_set_id:
-        :type target_set_id: str
-        :param source_set_id:
-        :type source_set_id: str
+        :param targetsetid:
+        :type targetsetid: str
+        :param sourcesetid:
+        :type sourcesetid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -483,10 +487,10 @@ class SetOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_add_to_set_by_set_request(
-            target_set_id=target_set_id,
-            source_set_id=source_set_id,
-            template_url=self.add_to_set_by_set.metadata['url'],
+        request = build_addtosetbyset_request(
+            targetsetid=targetsetid,
+            sourcesetid=sourcesetid,
+            template_url=self.addtosetbyset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -509,23 +513,23 @@ class SetOperations(object):
 
         return deserialized
 
-    add_to_set_by_set.metadata = {'url': "/api/v2/sets/{targetSetId}/members/set/{sourceSetId}"}  # type: ignore
+    addtosetbyset.metadata = {'url': "/api/v2/sets/{targetSetId}/members/set/{sourceSetId}"}  # type: ignore
 
 
     @distributed_trace
-    def remove_from_set_by_set(
+    def removefromsetbyset(
         self,
-        target_set_id,  # type: str
-        source_set_id,  # type: str
+        targetsetid,  # type: str
+        sourcesetid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """remove_from_set_by_set.
+        """removefromsetbyset.
 
-        :param target_set_id:
-        :type target_set_id: str
-        :param source_set_id:
-        :type source_set_id: str
+        :param targetsetid:
+        :type targetsetid: str
+        :param sourcesetid:
+        :type sourcesetid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -538,10 +542,10 @@ class SetOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_remove_from_set_by_set_request(
-            target_set_id=target_set_id,
-            source_set_id=source_set_id,
-            template_url=self.remove_from_set_by_set.metadata['url'],
+        request = build_removefromsetbyset_request(
+            targetsetid=targetsetid,
+            sourcesetid=sourcesetid,
+            template_url=self.removefromsetbyset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -564,20 +568,20 @@ class SetOperations(object):
 
         return deserialized
 
-    remove_from_set_by_set.metadata = {'url': "/api/v2/sets/{targetSetId}/members/set/{sourceSetId}"}  # type: ignore
+    removefromsetbyset.metadata = {'url': "/api/v2/sets/{targetSetId}/members/set/{sourceSetId}"}  # type: ignore
 
 
     @distributed_trace
-    def get_member_count(
+    def getmembercount(
         self,
-        set_id,  # type: str
+        setid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """get_member_count.
+        """getmembercount.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -590,9 +594,9 @@ class SetOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_member_count_request(
-            set_id=set_id,
-            template_url=self.get_member_count.metadata['url'],
+        request = build_getmembercount_request(
+            setid=setid,
+            template_url=self.getmembercount.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -615,5 +619,5 @@ class SetOperations(object):
 
         return deserialized
 
-    get_member_count.metadata = {'url': "/api/v2/sets/{setId}/count"}  # type: ignore
+    getmembercount.metadata = {'url': "/api/v2/sets/{setId}/count"}  # type: ignore
 

@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_create_enrollment_session_request(
+def build_createenrollmentsession_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_create_enrollment_session_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,13 +51,13 @@ def build_create_enrollment_session_request(
     )
 
 # fmt: on
-class EnrollmentOperations(object):
+class enrollmentOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`enrollment` attribute.
     """
 
@@ -72,38 +72,40 @@ class EnrollmentOperations(object):
 
 
     @distributed_trace
-    def create_enrollment_session(
+    def createenrollmentsession(
         self,
-        request,  # type: "_models.CreateEnrollmentSessionRequest"
+        request,  # type: "_models.createEnrollmentSessionRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.TokenResponse"
-        """create_enrollment_session.
+        # type: (...) -> "_models.tokenResponse"
+        """createenrollmentsession.
 
         :param request:
-        :type request: ~Runway.Py.models.CreateEnrollmentSessionRequest
+        :type request: ~runway.sdk.models.createEnrollmentSessionRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: TokenResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.TokenResponse
+        :return: tokenResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.tokenResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.TokenResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.tokenResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'CreateEnrollmentSessionRequest')
+        _json = self._serialize.body(request, 'createEnrollmentSessionRequest')
 
-        request = build_create_enrollment_session_request(
-            content_type=content_type,
+        request = build_createenrollmentsession_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.create_enrollment_session.metadata['url'],
+            template_url=self.createenrollmentsession.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -119,12 +121,12 @@ class EnrollmentOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('TokenResponse', pipeline_response)
+        deserialized = self._deserialize('tokenResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    create_enrollment_session.metadata = {'url': "/api/v2/enrollment"}  # type: ignore
+    createenrollmentsession.metadata = {'url': "/api/v2/enrollment"}  # type: ignore
 

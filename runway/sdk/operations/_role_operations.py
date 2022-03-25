@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_delete_by_set_request(
+def build_deletebyset_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_delete_by_set_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -55,7 +55,7 @@ def build_create_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -63,8 +63,8 @@ def build_create_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -95,8 +95,8 @@ def build_list_request(
     )
 
 
-def build_delete_by_id_request(
-    role_id,  # type: str
+def build_deletebyid_request(
+    roleid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -104,7 +104,7 @@ def build_delete_by_id_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/roles/{roleId}")
     path_format_arguments = {
-        "roleId": _SERIALIZER.url("role_id", role_id, 'str'),
+        "roleId": _SERIALIZER.url("roleid", roleid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -122,25 +122,25 @@ def build_delete_by_id_request(
 
 
 def build_update_request(
-    role_id,  # type: str
+    roleid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/roles/{roleId}")
     path_format_arguments = {
-        "roleId": _SERIALIZER.url("role_id", role_id, 'str'),
+        "roleId": _SERIALIZER.url("roleid", roleid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -152,7 +152,7 @@ def build_update_request(
 
 
 def build_load_request(
-    role_id,  # type: str
+    roleid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -160,7 +160,7 @@ def build_load_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/roles/{roleId}")
     path_format_arguments = {
-        "roleId": _SERIALIZER.url("role_id", role_id, 'str'),
+        "roleId": _SERIALIZER.url("roleid", roleid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -177,7 +177,7 @@ def build_load_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -201,7 +201,7 @@ def build_query_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -209,8 +209,8 @@ def build_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -241,11 +241,11 @@ def build_count_request(
     )
 
 
-def build_count_query_request(
+def build_countquery_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -253,8 +253,8 @@ def build_count_query_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -265,7 +265,7 @@ def build_count_query_request(
     )
 
 
-def build_get_query_schema_request(
+def build_getqueryschema_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -285,26 +285,26 @@ def build_get_query_schema_request(
     )
 
 
-def build_save_query_to_set_request(
-    set_id,  # type: str
+def build_savequerytoset_request(
+    setid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/roles/query/set/{setId}")
     path_format_arguments = {
-        "setId": _SERIALIZER.url("set_id", set_id, 'str'),
+        "setId": _SERIALIZER.url("setid", setid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -315,13 +315,13 @@ def build_save_query_to_set_request(
     )
 
 # fmt: on
-class RoleOperations(object):
+class roleOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`role` attribute.
     """
 
@@ -336,19 +336,21 @@ class RoleOperations(object):
 
 
     @distributed_trace
-    def delete_by_set(
+    def deletebyset(
         self,
-        set_request,  # type: "_models.IdRequest"
+        setrequest,  # type: "_models.idRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_set.
+        """deletebyset.
 
-        :param set_request:
-        :type set_request: ~Runway.Py.models.IdRequest
+        :param setrequest:
+        :type setrequest: ~runway.sdk.models.idRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -360,14 +362,14 @@ class RoleOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(set_request, 'IdRequest')
+        _json = self._serialize.body(setrequest, 'idRequest')
 
-        request = build_delete_by_set_request(
-            content_type=content_type,
+        request = build_deletebyset_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.delete_by_set.metadata['url'],
+            template_url=self.deletebyset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -390,40 +392,42 @@ class RoleOperations(object):
 
         return deserialized
 
-    delete_by_set.metadata = {'url': "/api/v2/roles"}  # type: ignore
+    deletebyset.metadata = {'url': "/api/v2/roles"}  # type: ignore
 
 
     @distributed_trace
     def create(
         self,
-        request,  # type: "_models.CreateRoleRequest"
+        request,  # type: "_models.createRoleRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.IdResponse"
+        # type: (...) -> "_models.idResponse"
         """create.
 
         :param request:
-        :type request: ~Runway.Py.models.CreateRoleRequest
+        :type request: ~runway.sdk.models.createRoleRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: IdResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.IdResponse
+        :return: idResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.idResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.IdResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.idResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'CreateRoleRequest')
+        _json = self._serialize.body(request, 'createRoleRequest')
 
         request = build_create_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.create.metadata['url'],
         )
@@ -441,7 +445,7 @@ class RoleOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('IdResponse', pipeline_response)
+        deserialized = self._deserialize('idResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -456,15 +460,15 @@ class RoleOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIRoleView"
+        # type: (...) -> "_models.queryResponseOfIRoleView"
         """list.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIRoleView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIRoleView
+        :return: queryResponseOfIRoleView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIRoleView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIRoleView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIRoleView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -488,7 +492,7 @@ class RoleOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIRoleView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIRoleView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -499,16 +503,16 @@ class RoleOperations(object):
 
 
     @distributed_trace
-    def delete_by_id(
+    def deletebyid(
         self,
-        role_id,  # type: str
+        roleid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_by_id.
+        """deletebyid.
 
-        :param role_id:
-        :type role_id: str
+        :param roleid:
+        :type roleid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -521,9 +525,9 @@ class RoleOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_delete_by_id_request(
-            role_id=role_id,
-            template_url=self.delete_by_id.metadata['url'],
+        request = build_deletebyid_request(
+            roleid=roleid,
+            template_url=self.deletebyid.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -546,26 +550,28 @@ class RoleOperations(object):
 
         return deserialized
 
-    delete_by_id.metadata = {'url': "/api/v2/roles/{roleId}"}  # type: ignore
+    deletebyid.metadata = {'url': "/api/v2/roles/{roleId}"}  # type: ignore
 
 
     @distributed_trace
     def update(
         self,
-        role_id,  # type: str
-        request,  # type: "_models.UpdateRoleRequest"
+        roleid,  # type: str
+        request,  # type: "_models.updateRoleRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
         """update.
 
-        :param role_id:
-        :type role_id: str
+        :param roleid:
+        :type roleid: str
         :param request:
-        :type request: ~Runway.Py.models.UpdateRoleRequest
+        :type request: ~runway.sdk.models.updateRoleRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -577,13 +583,13 @@ class RoleOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'UpdateRoleRequest')
+        _json = self._serialize.body(request, 'updateRoleRequest')
 
         request = build_update_request(
-            role_id=role_id,
-            content_type=content_type,
+            roleid=roleid,
+            contenttype=contenttype,
             json=_json,
             template_url=self.update.metadata['url'],
         )
@@ -614,20 +620,20 @@ class RoleOperations(object):
     @distributed_trace
     def load(
         self,
-        role_id,  # type: str
+        roleid,  # type: str
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayRole"
+        # type: (...) -> "_models.runwayRole"
         """load.
 
-        :param role_id:
-        :type role_id: str
+        :param roleid:
+        :type roleid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayRole, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayRole
+        :return: runwayRole, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayRole
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayRole"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayRole"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -635,7 +641,7 @@ class RoleOperations(object):
 
         
         request = build_load_request(
-            role_id=role_id,
+            roleid=roleid,
             template_url=self.load.metadata['url'],
         )
         request = _convert_request(request)
@@ -652,7 +658,7 @@ class RoleOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayRole', pipeline_response)
+        deserialized = self._deserialize('runwayRole', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -663,27 +669,27 @@ class RoleOperations(object):
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -699,47 +705,49 @@ class RoleOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/roles/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/roles/tags"}  # type: ignore
 
 
     @distributed_trace
     def query(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.QueryResponseOfIRoleView"
+        # type: (...) -> "_models.queryResponseOfIRoleView"
         """query.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: QueryResponseOfIRoleView, or the result of cls(response)
-        :rtype: ~Runway.Py.models.QueryResponseOfIRoleView
+        :return: queryResponseOfIRoleView, or the result of cls(response)
+        :rtype: ~runway.sdk.models.queryResponseOfIRoleView
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResponseOfIRoleView"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.queryResponseOfIRoleView"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
         request = build_query_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.query.metadata['url'],
         )
@@ -757,7 +765,7 @@ class RoleOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('QueryResponseOfIRoleView', pipeline_response)
+        deserialized = self._deserialize('queryResponseOfIRoleView', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -815,19 +823,21 @@ class RoleOperations(object):
 
 
     @distributed_trace
-    def count_query(
+    def countquery(
         self,
-        query,  # type: "_models.Query"
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """count_query.
+        """countquery.
 
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -839,14 +849,14 @@ class RoleOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_count_query_request(
-            content_type=content_type,
+        request = build_countquery_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.count_query.metadata['url'],
+            template_url=self.countquery.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -869,31 +879,31 @@ class RoleOperations(object):
 
         return deserialized
 
-    count_query.metadata = {'url': "/api/v2/roles/count/query"}  # type: ignore
+    countquery.metadata = {'url': "/api/v2/roles/count/query"}  # type: ignore
 
 
     @distributed_trace
-    def get_query_schema(
+    def getqueryschema(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.IFilterProperty"]
-        """get_query_schema.
+        # type: (...) -> List["_models.iFilterProperty"]
+        """getqueryschema.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of IFilterProperty, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.IFilterProperty]
+        :return: list of iFilterProperty, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.iFilterProperty]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.IFilterProperty"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.iFilterProperty"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_query_schema_request(
-            template_url=self.get_query_schema.metadata['url'],
+        request = build_getqueryschema_request(
+            template_url=self.getqueryschema.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -909,33 +919,35 @@ class RoleOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[IFilterProperty]', pipeline_response)
+        deserialized = self._deserialize('[iFilterProperty]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_query_schema.metadata = {'url': "/api/v2/roles/query/schema"}  # type: ignore
+    getqueryschema.metadata = {'url': "/api/v2/roles/query/schema"}  # type: ignore
 
 
     @distributed_trace
-    def save_query_to_set(
+    def savequerytoset(
         self,
-        set_id,  # type: str
-        query,  # type: "_models.Query"
+        setid,  # type: str
+        query,  # type: "_models.query"
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """save_query_to_set.
+        """savequerytoset.
 
-        :param set_id:
-        :type set_id: str
+        :param setid:
+        :type setid: str
         :param query:
-        :type query: ~Runway.Py.models.Query
+        :type query: ~runway.sdk.models.query
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: long, or the result of cls(response)
         :rtype: long
@@ -947,15 +959,15 @@ class RoleOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(query, 'Query')
+        _json = self._serialize.body(query, 'query')
 
-        request = build_save_query_to_set_request(
-            set_id=set_id,
-            content_type=content_type,
+        request = build_savequerytoset_request(
+            setid=setid,
+            contenttype=contenttype,
             json=_json,
-            template_url=self.save_query_to_set.metadata['url'],
+            template_url=self.savequerytoset.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -978,5 +990,5 @@ class RoleOperations(object):
 
         return deserialized
 
-    save_query_to_set.metadata = {'url': "/api/v2/roles/query/set/{setId}"}  # type: ignore
+    savequerytoset.metadata = {'url': "/api/v2/roles/query/set/{setId}"}  # type: ignore
 

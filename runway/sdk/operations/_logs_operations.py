@@ -27,8 +27,8 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_request_logs_request(
-    node_id,  # type: str
+def build_requestlogs_request(
+    nodeid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -36,7 +36,7 @@ def build_request_logs_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/logs/{nodeId}")
     path_format_arguments = {
-        "nodeId": _SERIALIZER.url("node_id", node_id, 'str'),
+        "nodeId": _SERIALIZER.url("nodeid", nodeid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -53,13 +53,13 @@ def build_request_logs_request(
     )
 
 # fmt: on
-class LogsOperations(object):
+class logsOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`logs` attribute.
     """
 
@@ -74,16 +74,16 @@ class LogsOperations(object):
 
 
     @distributed_trace
-    def request_logs(
+    def requestlogs(
         self,
-        node_id,  # type: str
+        nodeid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> str
-        """request_logs.
+        """requestlogs.
 
-        :param node_id:
-        :type node_id: str
+        :param nodeid:
+        :type nodeid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: str, or the result of cls(response)
         :rtype: str
@@ -96,9 +96,9 @@ class LogsOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_request_logs_request(
-            node_id=node_id,
-            template_url=self.request_logs.metadata['url'],
+        request = build_requestlogs_request(
+            nodeid=nodeid,
+            template_url=self.requestlogs.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -125,5 +125,5 @@ class LogsOperations(object):
 
         return deserialized
 
-    request_logs.metadata = {'url': "/api/v2/logs/{nodeId}"}  # type: ignore
+    requestlogs.metadata = {'url': "/api/v2/logs/{nodeId}"}  # type: ignore
 

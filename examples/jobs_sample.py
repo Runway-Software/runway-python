@@ -1,7 +1,7 @@
 import runway.sdk.models as models
 from runway.sdk import PyRunway
 
-runway_obj = PyRunway(email="pjv4yj@virginia.edu", password="Kali@0921")
+runway_obj = PyRunway(email="<email address>", password="<password>")
 
 """
 Example calls for these functions
@@ -36,7 +36,7 @@ def create_job(name,is_enabled,is_hidden,description,actions):
     Runway using the SDK
     """
 
-    request = models.CreateJobRequest(is_enabled=is_enabled,name=name,is_hidden=is_hidden,description=description,actions=actions)
+    request = models.createJobRequest(is_enabled=is_enabled,name=name,is_hidden=is_hidden,description=description,actions=actions)
     job_create_result = runway_obj.job.create(request=request)
 
     print(job_create_result)
@@ -49,7 +49,7 @@ def delete_job_by_id(id):
     using the SDK
     """
 
-    job_delete_result = runway_obj.job.delete_by_id(job_id=id)
+    job_delete_result = runway_obj.job.delete_by_id(jobid=id)
     print(job_delete_result)
 
 

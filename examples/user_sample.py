@@ -1,7 +1,7 @@
 import runway.sdk.models as models
 from runway.sdk import PyRunway
 
-runway_obj = PyRunway(email="pjv4yj@virginia.edu", password="Kali@0921")
+runway_obj = PyRunway(email="<email address>", password="<password>")
 
 """
 Example calls for these user functions
@@ -24,7 +24,7 @@ def user_all():
         print()
         print("User: " + user.name)
         print("id: " + user.id)
-        print("Email Address: " + user.email_address)
+        print("Email Address: " + user.emailaddress)
         print("Company: " + user.company)
         print()
 
@@ -42,4 +42,4 @@ def user_count():
     print(user_count_result)
 
 
-user_all()
+user_count()

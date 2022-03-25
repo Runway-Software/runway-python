@@ -31,7 +31,7 @@ def build_login_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_login_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -75,7 +75,7 @@ def build_signup_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -83,8 +83,8 @@ def build_signup_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -95,11 +95,11 @@ def build_signup_request(
     )
 
 
-def build_signup_live_request(
+def build_signuplive_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json, text/json"
     # Construct URL
@@ -107,8 +107,8 @@ def build_signup_live_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -119,7 +119,7 @@ def build_signup_live_request(
     )
 
 
-def build_get_current_user_request(
+def build_getcurrentuser_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -139,7 +139,7 @@ def build_get_current_user_request(
     )
 
 
-def build_get_current_node_status_request(
+def build_getcurrentnodestatus_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -159,7 +159,7 @@ def build_get_current_node_status_request(
     )
 
 
-def build_create_utility_node_request(
+def build_createutilitynode_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -183,7 +183,7 @@ def build_activate_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -191,8 +191,8 @@ def build_activate_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -207,7 +207,7 @@ def build_enroll_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -215,8 +215,8 @@ def build_enroll_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -227,7 +227,7 @@ def build_enroll_request(
     )
 
 
-def build_is_email_unique_request(
+def build_isemailunique_request(
     email,  # type: str
     **kwargs  # type: Any
 ):
@@ -253,7 +253,7 @@ def build_is_email_unique_request(
     )
 
 
-def build_get_password_strength_request(
+def build_getpasswordstrength_request(
     password,  # type: str
     **kwargs  # type: Any
 ):
@@ -279,11 +279,11 @@ def build_get_password_strength_request(
     )
 
 
-def build_reset_password_request(
+def build_resetpassword_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -291,8 +291,8 @@ def build_reset_password_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -323,13 +323,13 @@ def build_ping_request(
     )
 
 # fmt: on
-class AuthenticationOperations(object):
+class authenticationOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`authentication` attribute.
     """
 
@@ -346,34 +346,36 @@ class AuthenticationOperations(object):
     @distributed_trace
     def login(
         self,
-        request,  # type: "_models.LoginRequest"
+        request,  # type: "_models.loginRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.LoginResponse"
+        # type: (...) -> "_models.loginResponse"
         """login.
 
         :param request:
-        :type request: ~Runway.Py.models.LoginRequest
+        :type request: ~runway.sdk.models.loginRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: LoginResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.LoginResponse
+        :return: loginResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.loginResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.LoginResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.loginResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'LoginRequest')
+        _json = self._serialize.body(request, 'loginRequest')
 
         request = build_login_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.login.metadata['url'],
         )
@@ -391,7 +393,7 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('LoginResponse', pipeline_response)
+        deserialized = self._deserialize('loginResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -453,7 +455,7 @@ class AuthenticationOperations(object):
     @distributed_trace
     def signup(
         self,
-        request,  # type: "_models.SignupRequest"
+        request,  # type: "_models.signupRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
@@ -464,10 +466,12 @@ class AuthenticationOperations(object):
         produced by the Runway web application in order to succeed.
 
         :param request:
-        :type request: ~Runway.Py.models.SignupRequest
+        :type request: ~runway.sdk.models.signupRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -479,12 +483,12 @@ class AuthenticationOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'SignupRequest')
+        _json = self._serialize.body(request, 'signupRequest')
 
         request = build_signup_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.signup.metadata['url'],
         )
@@ -513,38 +517,40 @@ class AuthenticationOperations(object):
 
 
     @distributed_trace
-    def signup_live(
+    def signuplive(
         self,
-        request,  # type: "_models.SignupRequest"
+        request,  # type: "_models.signupRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.LoginResponse"
-        """signup_live.
+        # type: (...) -> "_models.loginResponse"
+        """signuplive.
 
         :param request:
-        :type request: ~Runway.Py.models.SignupRequest
+        :type request: ~runway.sdk.models.signupRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: LoginResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.LoginResponse
+        :return: loginResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.loginResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.LoginResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.loginResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'SignupRequest')
+        _json = self._serialize.body(request, 'signupRequest')
 
-        request = build_signup_live_request(
-            content_type=content_type,
+        request = build_signuplive_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.signup_live.metadata['url'],
+            template_url=self.signuplive.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -560,38 +566,38 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('LoginResponse', pipeline_response)
+        deserialized = self._deserialize('loginResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    signup_live.metadata = {'url': "/api/v2/auth/signup/live"}  # type: ignore
+    signuplive.metadata = {'url': "/api/v2/auth/signup/live"}  # type: ignore
 
 
     @distributed_trace
-    def get_current_user(
+    def getcurrentuser(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayUser"
-        """get_current_user.
+        # type: (...) -> "_models.runwayUser"
+        """getcurrentuser.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayUser, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayUser
+        :return: runwayUser, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayUser
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayUser"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayUser"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_current_user_request(
-            template_url=self.get_current_user.metadata['url'],
+        request = build_getcurrentuser_request(
+            template_url=self.getcurrentuser.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -607,38 +613,38 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayUser', pipeline_response)
+        deserialized = self._deserialize('runwayUser', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_current_user.metadata = {'url': "/api/v2/auth/user"}  # type: ignore
+    getcurrentuser.metadata = {'url': "/api/v2/auth/user"}  # type: ignore
 
 
     @distributed_trace
-    def get_current_node_status(
+    def getcurrentnodestatus(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.RunwayNode"
-        """get_current_node_status.
+        # type: (...) -> "_models.runwayNode"
+        """getcurrentnodestatus.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: RunwayNode, or the result of cls(response)
-        :rtype: ~Runway.Py.models.RunwayNode
+        :return: runwayNode, or the result of cls(response)
+        :rtype: ~runway.sdk.models.runwayNode
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.RunwayNode"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.runwayNode"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_current_node_status_request(
-            template_url=self.get_current_node_status.metadata['url'],
+        request = build_getcurrentnodestatus_request(
+            template_url=self.getcurrentnodestatus.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -654,38 +660,38 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('RunwayNode', pipeline_response)
+        deserialized = self._deserialize('runwayNode', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_current_node_status.metadata = {'url': "/api/v2/auth/node"}  # type: ignore
+    getcurrentnodestatus.metadata = {'url': "/api/v2/auth/node"}  # type: ignore
 
 
     @distributed_trace
-    def create_utility_node(
+    def createutilitynode(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.LoginResponse"
-        """create_utility_node.
+        # type: (...) -> "_models.loginResponse"
+        """createutilitynode.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: LoginResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.LoginResponse
+        :return: loginResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.loginResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.LoginResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.loginResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_create_utility_node_request(
-            template_url=self.create_utility_node.metadata['url'],
+        request = build_createutilitynode_request(
+            template_url=self.createutilitynode.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -701,47 +707,49 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('LoginResponse', pipeline_response)
+        deserialized = self._deserialize('loginResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    create_utility_node.metadata = {'url': "/api/v2/auth/node/utility"}  # type: ignore
+    createutilitynode.metadata = {'url': "/api/v2/auth/node/utility"}  # type: ignore
 
 
     @distributed_trace
     def activate(
         self,
-        request,  # type: "_models.ActivateUserRequest"
+        request,  # type: "_models.activateUserRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.LoginResponse"
+        # type: (...) -> "_models.loginResponse"
         """activate.
 
         :param request:
-        :type request: ~Runway.Py.models.ActivateUserRequest
+        :type request: ~runway.sdk.models.activateUserRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: LoginResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.LoginResponse
+        :return: loginResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.loginResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.LoginResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.loginResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'ActivateUserRequest')
+        _json = self._serialize.body(request, 'activateUserRequest')
 
         request = build_activate_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.activate.metadata['url'],
         )
@@ -759,7 +767,7 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('LoginResponse', pipeline_response)
+        deserialized = self._deserialize('loginResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -772,34 +780,36 @@ class AuthenticationOperations(object):
     @distributed_trace
     def enroll(
         self,
-        request,  # type: "_models.EnrollRequest"
+        request,  # type: "_models.enrollRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.EnrollResponse"
+        # type: (...) -> "_models.enrollResponse"
         """enroll.
 
         :param request:
-        :type request: ~Runway.Py.models.EnrollRequest
+        :type request: ~runway.sdk.models.enrollRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: EnrollResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.EnrollResponse
+        :return: enrollResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.enrollResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.EnrollResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.enrollResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'EnrollRequest')
+        _json = self._serialize.body(request, 'enrollRequest')
 
         request = build_enroll_request(
-            content_type=content_type,
+            contenttype=contenttype,
             json=_json,
             template_url=self.enroll.metadata['url'],
         )
@@ -817,7 +827,7 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('EnrollResponse', pipeline_response)
+        deserialized = self._deserialize('enrollResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -828,13 +838,13 @@ class AuthenticationOperations(object):
 
 
     @distributed_trace
-    def is_email_unique(
+    def isemailunique(
         self,
         email,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> bool
-        """is_email_unique.
+        """isemailunique.
 
         :param email:
         :type email: str
@@ -850,9 +860,9 @@ class AuthenticationOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_is_email_unique_request(
+        request = build_isemailunique_request(
             email=email,
-            template_url=self.is_email_unique.metadata['url'],
+            template_url=self.isemailunique.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -875,17 +885,17 @@ class AuthenticationOperations(object):
 
         return deserialized
 
-    is_email_unique.metadata = {'url': "/api/v2/auth/unique-identity/{email}"}  # type: ignore
+    isemailunique.metadata = {'url': "/api/v2/auth/unique-identity/{email}"}  # type: ignore
 
 
     @distributed_trace
-    def get_password_strength(
+    def getpasswordstrength(
         self,
         password,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> int
-        """get_password_strength.
+        """getpasswordstrength.
 
         :param password:
         :type password: str
@@ -901,9 +911,9 @@ class AuthenticationOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_password_strength_request(
+        request = build_getpasswordstrength_request(
             password=password,
-            template_url=self.get_password_strength.metadata['url'],
+            template_url=self.getpasswordstrength.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -926,42 +936,44 @@ class AuthenticationOperations(object):
 
         return deserialized
 
-    get_password_strength.metadata = {'url': "/api/v2/auth/password-strength/{password}"}  # type: ignore
+    getpasswordstrength.metadata = {'url': "/api/v2/auth/password-strength/{password}"}  # type: ignore
 
 
     @distributed_trace
-    def reset_password(
+    def resetpassword(
         self,
-        request,  # type: "_models.ResetPasswordRequest"
+        request,  # type: "_models.resetPasswordRequest"
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.LoginResponse"
-        """reset_password.
+        # type: (...) -> "_models.loginResponse"
+        """resetpassword.
 
         :param request:
-        :type request: ~Runway.Py.models.ResetPasswordRequest
+        :type request: ~runway.sdk.models.resetPasswordRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: LoginResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.LoginResponse
+        :return: loginResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.loginResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.LoginResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.loginResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'ResetPasswordRequest')
+        _json = self._serialize.body(request, 'resetPasswordRequest')
 
-        request = build_reset_password_request(
-            content_type=content_type,
+        request = build_resetpassword_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.reset_password.metadata['url'],
+            template_url=self.resetpassword.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -977,14 +989,14 @@ class AuthenticationOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('LoginResponse', pipeline_response)
+        deserialized = self._deserialize('loginResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    reset_password.metadata = {'url': "/api/v2/auth/password-reset"}  # type: ignore
+    resetpassword.metadata = {'url': "/api/v2/auth/password-reset"}  # type: ignore
 
 
     @distributed_trace

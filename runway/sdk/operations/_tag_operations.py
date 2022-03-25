@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_add_tags_request(
+def build_addtags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_add_tags_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,11 +51,11 @@ def build_add_tags_request(
     )
 
 
-def build_delete_tags_request(
+def build_deletetags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -63,8 +63,8 @@ def build_delete_tags_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -75,7 +75,7 @@ def build_delete_tags_request(
     )
 
 
-def build_get_tags_request(
+def build_gettags_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -95,13 +95,13 @@ def build_get_tags_request(
     )
 
 # fmt: on
-class TagOperations(object):
+class tagOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`tag` attribute.
     """
 
@@ -116,19 +116,21 @@ class TagOperations(object):
 
 
     @distributed_trace
-    def add_tags(
+    def addtags(
         self,
-        request,  # type: "_models.TagRequest"
+        request,  # type: "_models.tagRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """add_tags.
+        """addtags.
 
         :param request:
-        :type request: ~Runway.Py.models.TagRequest
+        :type request: ~runway.sdk.models.tagRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -140,14 +142,14 @@ class TagOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'TagRequest')
+        _json = self._serialize.body(request, 'tagRequest')
 
-        request = build_add_tags_request(
-            content_type=content_type,
+        request = build_addtags_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.add_tags.metadata['url'],
+            template_url=self.addtags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -170,23 +172,25 @@ class TagOperations(object):
 
         return deserialized
 
-    add_tags.metadata = {'url': "/api/v2/tags"}  # type: ignore
+    addtags.metadata = {'url': "/api/v2/tags"}  # type: ignore
 
 
     @distributed_trace
-    def delete_tags(
+    def deletetags(
         self,
-        request,  # type: "_models.TagRequest"
+        request,  # type: "_models.tagRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """delete_tags.
+        """deletetags.
 
         :param request:
-        :type request: ~Runway.Py.models.TagRequest
+        :type request: ~runway.sdk.models.tagRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -198,14 +202,14 @@ class TagOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'TagRequest')
+        _json = self._serialize.body(request, 'tagRequest')
 
-        request = build_delete_tags_request(
-            content_type=content_type,
+        request = build_deletetags_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.delete_tags.metadata['url'],
+            template_url=self.deletetags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -228,31 +232,31 @@ class TagOperations(object):
 
         return deserialized
 
-    delete_tags.metadata = {'url': "/api/v2/tags"}  # type: ignore
+    deletetags.metadata = {'url': "/api/v2/tags"}  # type: ignore
 
 
     @distributed_trace
-    def get_tags(
+    def gettags(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.TagView"]
-        """get_tags.
+        # type: (...) -> List["_models.tagView"]
+        """gettags.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of TagView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.TagView]
+        :return: list of tagView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.tagView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.TagView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.tagView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_tags_request(
-            template_url=self.get_tags.metadata['url'],
+        request = build_gettags_request(
+            template_url=self.gettags.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -268,12 +272,12 @@ class TagOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[TagView]', pipeline_response)
+        deserialized = self._deserialize('[tagView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_tags.metadata = {'url': "/api/v2/tags"}  # type: ignore
+    gettags.metadata = {'url': "/api/v2/tags"}  # type: ignore
 

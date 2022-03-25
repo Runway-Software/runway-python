@@ -27,11 +27,11 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 # fmt: off
 
-def build_shell_write_request(
+def build_shellwrite_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "text/plain, application/json, text/json"
     # Construct URL
@@ -39,8 +39,8 @@ def build_shell_write_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -51,11 +51,11 @@ def build_shell_write_request(
     )
 
 
-def build_shell_cancel_request(
+def build_shellcancel_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -63,8 +63,8 @@ def build_shell_cancel_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -75,11 +75,11 @@ def build_shell_cancel_request(
     )
 
 
-def build_shell_ping_request(
+def build_shellping_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    content_type = kwargs.pop('content_type', None)  # type: Optional[str]
+    contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
     accept = "application/json"
     # Construct URL
@@ -87,8 +87,8 @@ def build_shell_ping_request(
 
     # Construct headers
     _header_parameters = kwargs.pop("headers", {})  # type: Dict[str, Any]
-    if content_type is not None:
-        _header_parameters['Content-Type'] = _SERIALIZER.header("content_type", content_type, 'str')
+    if contenttype is not None:
+        _header_parameters['Content-Type'] = _SERIALIZER.header("contenttype", contenttype, 'str')
     _header_parameters['Accept'] = _SERIALIZER.header("accept", accept, 'str')
 
     return HttpRequest(
@@ -99,13 +99,13 @@ def build_shell_ping_request(
     )
 
 # fmt: on
-class RemoteShellOperations(object):
+class remoteShellOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`remote_shell` attribute.
     """
 
@@ -120,19 +120,21 @@ class RemoteShellOperations(object):
 
 
     @distributed_trace
-    def shell_write(
+    def shellwrite(
         self,
-        request,  # type: "_models.RemoteShellRequest"
+        request,  # type: "_models.remoteShellRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> str
-        """shell_write.
+        """shellwrite.
 
         :param request:
-        :type request: ~Runway.Py.models.RemoteShellRequest
+        :type request: ~runway.sdk.models.remoteShellRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: str, or the result of cls(response)
         :rtype: str
@@ -144,14 +146,14 @@ class RemoteShellOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'RemoteShellRequest')
+        _json = self._serialize.body(request, 'remoteShellRequest')
 
-        request = build_shell_write_request(
-            content_type=content_type,
+        request = build_shellwrite_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.shell_write.metadata['url'],
+            template_url=self.shellwrite.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -178,23 +180,25 @@ class RemoteShellOperations(object):
 
         return deserialized
 
-    shell_write.metadata = {'url': "/api/v2/shell"}  # type: ignore
+    shellwrite.metadata = {'url': "/api/v2/shell"}  # type: ignore
 
 
     @distributed_trace
-    def shell_cancel(
+    def shellcancel(
         self,
-        request,  # type: "_models.RemoteShellDeleteRequest"
+        request,  # type: "_models.remoteShellDeleteRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """shell_cancel.
+        """shellcancel.
 
         :param request:
-        :type request: ~Runway.Py.models.RemoteShellDeleteRequest
+        :type request: ~runway.sdk.models.remoteShellDeleteRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -206,14 +210,14 @@ class RemoteShellOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'RemoteShellDeleteRequest')
+        _json = self._serialize.body(request, 'remoteShellDeleteRequest')
 
-        request = build_shell_cancel_request(
-            content_type=content_type,
+        request = build_shellcancel_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.shell_cancel.metadata['url'],
+            template_url=self.shellcancel.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -236,23 +240,25 @@ class RemoteShellOperations(object):
 
         return deserialized
 
-    shell_cancel.metadata = {'url': "/api/v2/shell"}  # type: ignore
+    shellcancel.metadata = {'url': "/api/v2/shell"}  # type: ignore
 
 
     @distributed_trace
-    def shell_ping(
+    def shellping(
         self,
-        request,  # type: "_models.RemoteShellPingRequest"
+        request,  # type: "_models.remoteShellPingRequest"
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """shell_ping.
+        """shellping.
 
         :param request:
-        :type request: ~Runway.Py.models.RemoteShellPingRequest
+        :type request: ~runway.sdk.models.remoteShellPingRequest
+        :keyword contenttype: Body Parameter content-type. Possible values are "application/json" or
+         None. Default value is "application/json".
+        :paramtype contenttype: str
         :keyword content_type: Media type of the body sent to the API. Possible values are:
          "application/json" or "application/*+json". Default value is "application/json".
-        :paramtype content_type: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -264,14 +270,14 @@ class RemoteShellOperations(object):
         }
         error_map.update(kwargs.pop('error_map', {}))
 
-        content_type = kwargs.pop('content_type', "application/json")  # type: Optional[str]
+        contenttype = kwargs.pop('contenttype', "application/json")  # type: Optional[str]
 
-        _json = self._serialize.body(request, 'RemoteShellPingRequest')
+        _json = self._serialize.body(request, 'remoteShellPingRequest')
 
-        request = build_shell_ping_request(
-            content_type=content_type,
+        request = build_shellping_request(
+            contenttype=contenttype,
             json=_json,
-            template_url=self.shell_ping.metadata['url'],
+            template_url=self.shellping.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -294,5 +300,5 @@ class RemoteShellOperations(object):
 
         return deserialized
 
-    shell_ping.metadata = {'url': "/api/v2/shell/ping"}  # type: ignore
+    shellping.metadata = {'url': "/api/v2/shell/ping"}  # type: ignore
 

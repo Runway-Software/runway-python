@@ -47,13 +47,13 @@ def build_socket_request(
     )
 
 # fmt: on
-class ClientOperations(object):
+class clientOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`client` attribute.
     """
 

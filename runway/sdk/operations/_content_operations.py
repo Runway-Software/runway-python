@@ -31,7 +31,7 @@ def build_version_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
-    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.Enum6"]]
+    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.enum6"]]
 
     accept = "application/json"
     # Construct URL
@@ -55,12 +55,12 @@ def build_version_request(
     )
 
 
-def build_download_public_file_request(
+def build_downloadpublicfile_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
     key = kwargs.pop('key', None)  # type: Optional[str]
-    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.Enum6"]]
+    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.enum6"]]
     id = kwargs.pop('id', None)  # type: Optional[str]
 
     accept = "application/json"
@@ -89,7 +89,7 @@ def build_download_public_file_request(
     )
 
 
-def build_get_public_downloads_request(
+def build_getpublicdownloads_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -109,12 +109,12 @@ def build_get_public_downloads_request(
     )
 
 
-def build_get_public_file_info_request(
+def build_getpublicfileinfo_request(
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
     key = kwargs.pop('key', None)  # type: Optional[str]
-    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.Enum6"]]
+    platform = kwargs.pop('platform', None)  # type: Optional[Union[str, "_models.enum6"]]
 
     accept = "application/json"
     # Construct URL
@@ -161,7 +161,7 @@ def build_upload_request(
 
 
 def build_download_request(
-    content_id,  # type: str
+    contentid,  # type: str
     **kwargs  # type: Any
 ):
     # type: (...) -> HttpRequest
@@ -169,7 +169,7 @@ def build_download_request(
     # Construct URL
     _url = kwargs.pop("template_url", "/api/v2/content/{contentId}")
     path_format_arguments = {
-        "contentId": _SERIALIZER.url("content_id", content_id, 'str'),
+        "contentId": _SERIALIZER.url("contentid", contentid, 'str'),
     }
 
     _url = _format_url_section(_url, **path_format_arguments)
@@ -186,13 +186,13 @@ def build_download_request(
     )
 
 # fmt: on
-class ContentOperations(object):
+class contentOperations(object):
     """
     .. warning::
         **DO NOT** instantiate this class directly.
 
         Instead, you should access the following operations through
-        :class:`~Runway.Py.PyRunway`'s
+        :class:`~runway.sdk.PyRunway`'s
         :attr:`content` attribute.
     """
 
@@ -211,15 +211,15 @@ class ContentOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.VersionResponse"
+        # type: (...) -> "_models.versionResponse"
         """version.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: VersionResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.VersionResponse
+        :return: versionResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.versionResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.VersionResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.versionResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -244,7 +244,7 @@ class ContentOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('VersionResponse', pipeline_response)
+        deserialized = self._deserialize('versionResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -255,14 +255,14 @@ class ContentOperations(object):
 
 
     @distributed_trace
-    def download_public_file(
+    def downloadpublicfile(
         self,
         key=None,  # type: Optional[str]
         id=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
-        """download_public_file.
+        """downloadpublicfile.
 
         :param key:  Default value is None.
         :type key: str
@@ -280,11 +280,11 @@ class ContentOperations(object):
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_download_public_file_request(
+        request = build_downloadpublicfile_request(
             key=key,
             platform=self._config.platform,
             id=id,
-            template_url=self.download_public_file.metadata['url'],
+            template_url=self.downloadpublicfile.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -307,31 +307,31 @@ class ContentOperations(object):
 
         return deserialized
 
-    download_public_file.metadata = {'url': "/api/v2/content/public"}  # type: ignore
+    downloadpublicfile.metadata = {'url': "/api/v2/content/public"}  # type: ignore
 
 
     @distributed_trace
-    def get_public_downloads(
+    def getpublicdownloads(
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> List["_models.ContentView"]
-        """get_public_downloads.
+        # type: (...) -> List["_models.contentView"]
+        """getpublicdownloads.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: list of ContentView, or the result of cls(response)
-        :rtype: list[~Runway.Py.models.ContentView]
+        :return: list of contentView, or the result of cls(response)
+        :rtype: list[~runway.sdk.models.contentView]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.ContentView"]]
+        cls = kwargs.pop('cls', None)  # type: ClsType[List["_models.contentView"]]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_public_downloads_request(
-            template_url=self.get_public_downloads.metadata['url'],
+        request = build_getpublicdownloads_request(
+            template_url=self.getpublicdownloads.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -347,43 +347,43 @@ class ContentOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('[ContentView]', pipeline_response)
+        deserialized = self._deserialize('[contentView]', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_public_downloads.metadata = {'url': "/api/v2/content/public/available"}  # type: ignore
+    getpublicdownloads.metadata = {'url': "/api/v2/content/public/available"}  # type: ignore
 
 
     @distributed_trace
-    def get_public_file_info(
+    def getpublicfileinfo(
         self,
         key=None,  # type: Optional[str]
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.ContentInfo"
-        """get_public_file_info.
+        # type: (...) -> "_models.contentInfo"
+        """getpublicfileinfo.
 
         :param key:  Default value is None.
         :type key: str
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: ContentInfo, or the result of cls(response)
-        :rtype: ~Runway.Py.models.ContentInfo
+        :return: contentInfo, or the result of cls(response)
+        :rtype: ~runway.sdk.models.contentInfo
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.ContentInfo"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.contentInfo"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
         error_map.update(kwargs.pop('error_map', {}))
 
         
-        request = build_get_public_file_info_request(
+        request = build_getpublicfileinfo_request(
             key=key,
             platform=self._config.platform,
-            template_url=self.get_public_file_info.metadata['url'],
+            template_url=self.getpublicfileinfo.metadata['url'],
         )
         request = _convert_request(request)
         request.url = self._client.format_url(request.url)
@@ -399,14 +399,14 @@ class ContentOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('ContentInfo', pipeline_response)
+        deserialized = self._deserialize('contentInfo', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
 
-    get_public_file_info.metadata = {'url': "/api/v2/content/public/info"}  # type: ignore
+    getpublicfileinfo.metadata = {'url': "/api/v2/content/public/info"}  # type: ignore
 
 
     @distributed_trace
@@ -414,15 +414,15 @@ class ContentOperations(object):
         self,
         **kwargs  # type: Any
     ):
-        # type: (...) -> "_models.IdResponse"
+        # type: (...) -> "_models.idResponse"
         """upload.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
-        :return: IdResponse, or the result of cls(response)
-        :rtype: ~Runway.Py.models.IdResponse
+        :return: idResponse, or the result of cls(response)
+        :rtype: ~runway.sdk.models.idResponse
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.IdResponse"]
+        cls = kwargs.pop('cls', None)  # type: ClsType["_models.idResponse"]
         error_map = {
             401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
         }
@@ -446,7 +446,7 @@ class ContentOperations(object):
             map_error(status_code=response.status_code, response=response, error_map=error_map)
             raise HttpResponseError(response=response)
 
-        deserialized = self._deserialize('IdResponse', pipeline_response)
+        deserialized = self._deserialize('idResponse', pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
@@ -459,14 +459,14 @@ class ContentOperations(object):
     @distributed_trace
     def download(
         self,
-        content_id,  # type: str
+        contentid,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> IO
         """download.
 
-        :param content_id:
-        :type content_id: str
+        :param contentid:
+        :type contentid: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: IO, or the result of cls(response)
         :rtype: IO
@@ -480,7 +480,7 @@ class ContentOperations(object):
 
         
         request = build_download_request(
-            content_id=content_id,
+            contentid=contentid,
             template_url=self.download.metadata['url'],
         )
         request = _convert_request(request)
