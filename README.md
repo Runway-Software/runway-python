@@ -25,7 +25,7 @@ You will then be able to make any call using the Runway SDK
 This sample call gets a list of all endpoint assets in the Runway instance
 
 ```
-endpoint_assets_result = runway_obj.endpoint_asset.list(headers=headers)
+endpoint_assets_result = runway_obj.endpoint_asset.list()
 print(endpoint_assets_result)
 ```
 
