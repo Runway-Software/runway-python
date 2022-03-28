@@ -10,8 +10,7 @@ pip3 install -e .
 ```
 
 # Authenticating with the SDK
-This sample code generates a headers variable which should be passed to each endpoint function (check the examples folder for more clarity)
-
+To authenticate to the api, run the following commands in your terminal from the runway-sdk directory:
 ```
 import runway.sdk.models as models
 from runway.sdk import PyRunway
