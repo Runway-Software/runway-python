@@ -10,18 +10,16 @@ pip3 install -e .
 ```
 
 # Authenticating with the SDK
-This sample code generates a headers variable which should be passed to each endpoint function (check the examples folder for more clarity)
-
+To authenticate to the api, run the following commands in your terminal from the runway-sdk directory:
 ```
-import runway.sdk.models as models
-from runway.sdk import PyRunway
-
-runway_obj = PyRunway()
-login_request = models.LoginRequest(remember=True,email="<email address>",password="<password>")
-authentication_result = runway_obj.authentication.login(request=login_request)
-session_id = authentication_result.session
-headers = {"Authorization" : "Session " + session_id}
+cd examples
+python3 authentication_example.py
 ```
+This will print a session token to the console. Do the following with the session token:
+```
+export RUNWAY_SESSION_ID=<SESSION ID>
+```
+You will then be able to make any call using the Runway SDK
 
 # Sample API Call
 This sample call gets a list of all endpoint assets in the Runway instance
