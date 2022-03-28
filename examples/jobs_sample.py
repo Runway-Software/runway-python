@@ -36,7 +36,7 @@ def create_job(name,is_enabled,is_hidden,description,actions):
     Runway using the SDK
     """
 
-    request = models.createJobRequest(is_enabled=is_enabled,name=name,is_hidden=is_hidden,description=description,actions=actions)
+    request = models.createJobRequest(isenabled=is_enabled,name=name,ishidden=is_hidden,description=description,actions=actions)
     job_create_result = runway_obj.job.create(request=request)
 
     print(job_create_result)

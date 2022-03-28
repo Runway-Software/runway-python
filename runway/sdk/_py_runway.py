@@ -93,7 +93,7 @@ class PyRunway(object):    # pylint: disable=too-many-instance-attributes
         self._deserialize = Deserializer(client_models)
         self._serialize.client_side_validation = False
 
-        self.headers = self.get_headers()
+        #self.headers = self.get_headers()
 
         self.account_asset = accountAssetOperations(self._client, self._config, self._serialize, self._deserialize)
         self.asset = assetOperations(self._client, self._config, self._serialize, self._deserialize)
