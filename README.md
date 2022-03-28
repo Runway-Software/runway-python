@@ -13,7 +13,7 @@ pip3 install -e .
 To authenticate to the api, run the following commands in your terminal from the runway-sdk directory:
 ```
 cd examples
-python3 authentication_example.py
+python3 authentication_sample.py
 ```
 This will print a session token to the console. Do the following with the session token:
 ```
