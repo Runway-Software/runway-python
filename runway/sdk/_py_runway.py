@@ -74,16 +74,11 @@ class PyRunway(object):    # pylint: disable=too-many-instance-attributes
 
     def __init__(
         self,
-        email, # type: str
-        password, #type: str
         platform=None,  # type: Optional[Union[str, "_models.enum6"]]
         base_url="https://portal.runway.host",  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> None
-
-        self.password = password
-        self.email = email
 
         self._config = PyRunwayConfiguration(platform=platform, **kwargs)
         self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
@@ -117,12 +112,12 @@ class PyRunway(object):    # pylint: disable=too-many-instance-attributes
         self.tag = tagOperations(self._client, self._config, self._serialize, self._deserialize)
         self.user = userOperations(self._client, self._config, self._serialize, self._deserialize)
 
-    def get_headers(self):
+    def getHeaders(self, email, password):
 
         """
         """
 
-        login_request = models.loginRequest(remember=True,email=self.email,password=self.password)
+        login_request = models.loginRequest(remember=True,email=email,password=password)
         header_authentication = authenticationOperations(self._client, self._config, self._serialize, self._deserialize, {})
         authentication_result = header_authentication.login(request=login_request)
         session_id = authentication_result.session
